@@ -23,3 +23,5 @@ ASTRO quick start Cource (https://youtu.be/XoIHKO6AkoM?si=rgvMlilxUx3HodRA)
 
 5 ways to load data (https://youtu.be/aS5id2273gY?si=4ukuxpXhy0GvO2ly) also watch this guy youtube channel because
 he has a lot of astro videos.
+
+use tailwind if you want to: (https://tailwindcss.com/)
