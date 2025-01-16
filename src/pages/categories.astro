@@ -1,11 +1,18 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const movies = await getCollection("apiMovies");
 ---
 
 <BaseLayout title="MovieStore-lab">
   <main class="container">
     <h1>hello from Categories</h1>
-
+    <section>
+      <ul>
+        {movies.map((m) => <li>{m.data.original_title}</li>)}
+      </ul>
+    </section>
     <blockquote>
       Contact is a funny word. Some people think design means how it looks. But of course, if you dig deeper, it's
       really how it works.”
