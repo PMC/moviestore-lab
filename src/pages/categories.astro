@@ -10,7 +10,7 @@ const movies = await getCollection("apiMovies");
     <h1>hello from Categories</h1>
     <section>
       <ul>
-        {movies.map((m) => <li>{m.data.original_title}</li>)}
+        {movies.map((m) => <li>{m.data.title}</li>)}
       </ul>
     </section>
     <blockquote>
