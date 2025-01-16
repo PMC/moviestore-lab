@@ -25,3 +25,7 @@ ASTRO quick start Cource (https://youtu.be/XoIHKO6AkoM?si=rgvMlilxUx3HodRA)
 he has a lot of astro videos.
 
 use tailwind if you want to: (https://tailwindcss.com/)
+
+## other resources (add if you find anything)
+- Example themes from Astro own repo (https://github.com/withastro/astro/tree/latest/examples)
+
