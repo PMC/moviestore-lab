@@ -1,17 +1,129 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+// Temporary cart data for illustration
+const cartTemp = [
+  {title: "Movie1", price: 12.99, quantity: 1,},
+  {title: "Movie2", price: 8.49, quantity: 2,},
+];
 ---
 
 <BaseLayout title="MovieStore-lab">
   <main class="container">
-    <h1>hello from Cart</h1>
+    <h1>Checkout</h1>
 
-    <blockquote>
-      Contact is a funny word. Some people think design means how it looks. But of course, if you dig deeper, it's
-      really how it works.”
-      <footer>
-        <cite>— Steve Jobs</cite>
-      </footer>
-    </blockquote>
+    <div id="cartContainer"></div>
+
+    <form method="POST" action="#">
+      <input type="hidden" id="cartData" name="cartData" value={JSON.stringify(cartTemp)}/>
+
+      <h2>Customer Information</h2>
+      <div>
+        <label for="name-checkout">Name:</label><br />
+        <input id="name-checkout" name="name" required />
+      </div>
+      <div>
+        <label for="address-checkout">Address:</label><br />
+        <input id="address-checkout" name="address" required />
+      </div>
+      <div>
+        <label for="email-checkout">Email:</label><br />
+        <input id="email-checkout" name="email" type="email" required />
+      </div>
+      <button type="submit">Buy Now</button>
+    </form>
+
+    <script is:inline>
+      const cartTemp = [
+        {title: "Movie1", price: 12.99, quantity: 1,},
+        {title: "Movie2", price: 8.49, quantity: 2,},
+      ];
+      const cart = JSON.parse(JSON.stringify(cartTemp));
+
+      function renderCart() {
+        const container = document.getElementById("cartContainer");
+        let html = "";
+        let total = 0;
+
+        html += `
+          <table border="1" cellspacing="0" cellpadding="6">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+
+        cart.forEach((item, idx) => {
+          const subTotal = item.price * item.quantity;
+          total += subTotal;
+          html += `
+            <tr>
+              <td>${item.title}</td>
+              <td>$${item.price.toFixed(2)}</td>
+              <td>${item.quantity}</td>
+              <td>
+                <button class="decBtn" data-idx="${idx}">-</button>
+                <button class="incBtn" data-idx="${idx}">+</button>
+                <button class="rmBtn" data-idx="${idx}">Remove</button>
+              </td>
+            </tr>
+          `;
+        });
+
+        html += `
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2"></td>
+                <td><strong>Grand Total:</strong></td>
+                <td>$${total.toFixed(2)}</td>
+              </tr>
+            </tfoot>
+          </table>
+        `;
+
+        container.innerHTML = html;
+
+        const cartDataInput = document.getElementById("cartData");
+        if (cartDataInput) {
+          console.log(cartDataInput.value);
+          cartDataInput.value = JSON.stringify(cart);
+          console.log(cart);
+        }
+
+        document.querySelectorAll(".decBtn").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            const idx = e.target.getAttribute("data-idx");
+            if (cart[idx].quantity > 1) {
+              cart[idx].quantity--;
+            }
+            renderCart();
+          });
+        });
+
+        document.querySelectorAll(".incBtn").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            const idx = e.target.getAttribute("data-idx");
+            cart[idx].quantity++;
+            renderCart();
+          });
+        });
+
+        document.querySelectorAll(".rmBtn").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            const idx = e.target.getAttribute("data-idx");
+            cart.splice(idx, 1);
+            renderCart();
+          });
+        });
+      }
+
+      renderCart();
+    </script>
   </main>
 </BaseLayout>
