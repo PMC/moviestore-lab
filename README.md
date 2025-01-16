@@ -15,16 +15,15 @@ All commands are run from the root of the project, from a terminal:
 
 ## 👀 Want to learn more?
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
 
-picocss documentation (https://picocss.com/docs).
+- picocss documentation (https://picocss.com/docs).
 
-ASTRO quick start Cource (https://youtu.be/XoIHKO6AkoM?si=rgvMlilxUx3HodRA)
+- ASTRO quick start Cource (https://youtu.be/XoIHKO6AkoM?si=rgvMlilxUx3HodRA)
 
-5 ways to load data (https://youtu.be/aS5id2273gY?si=4ukuxpXhy0GvO2ly) also watch this guy youtube channel because
-he has a lot of astro videos.
+- 5 ways to load data (https://youtu.be/aS5id2273gY?si=4ukuxpXhy0GvO2ly) also watch this guy youtube channel because he has a lot of astro videos.
 
-use tailwind if you want to: (https://tailwindcss.com/)
+- use tailwind if you want to: (https://tailwindcss.com/)
 
 ## other resources (add if you find anything)
 - Example themes from Astro own repo (https://github.com/withastro/astro/tree/latest/examples)
