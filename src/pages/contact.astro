@@ -4,14 +4,107 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout title="MovieStore-lab">
   <main class="container-fluid">
-    <h1>hello from Contact</h1>
+    <h1>Contact Us / Customer Support</h1>
+    <p>
+      We're here to make your movie shopping experience smooth, enjoyable, and
+      memorable.
+    </p>
 
-    <blockquote>
-      Contact is a funny word. Some people think design means how it looks. But of course, if you dig deeper, it's
-      really how it works.”
-      <footer>
-        <cite>— Steve Jobs</cite>
-      </footer>
-    </blockquote>
+    <section>
+      <h2>How to Reach Us</h2>
+      <ul>
+        <li>
+          <strong>Email Support:</strong>
+          <a href="mailto:support@moviestorelab.com">support@moviestorelab.com</a>
+          <p>We aim to respond to inquiries within 24-48 hours.</p>
+        </li>
+        <li>
+          <strong>Phone Support:</strong> (555) 123-4567
+          <p>Available Monday - Friday, 9:00 AM - 6:00 PM (EST).</p>
+        </li>
+        <li>
+          <strong>Use contact form:</strong>
+        </li>
+      </ul>
+      <h2>Contact Form</h2>
+      <p>
+        Prefer to reach out online? Fill out the form below, and we'll get back
+        to you as soon as possible.
+      </p>
+      <form action="#" method="POST">
+        <label for="fullname-contact-form">Full Name</label>
+        <input type="text" id="fullname-contact-form" name="fullname" required />
+
+        <label for="email-contact-form">Email</label>
+        <input type="email" id="email-contact-form" name="email" required />
+
+        <label for="message-contact-form">Message</label>
+        <textarea id="message-contact-form" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Common Topics</h2>
+      <ul>
+        <li>
+          <strong>Order Status:</strong>
+          <p>
+            Check your order status in your account under “My Orders.” For
+            delays or shipping questions, please contact us.
+          </p>
+        </li>
+        <li>
+          <strong>Refunds &amp; Exchanges:</strong>
+          <p>
+            If you're unsatisfied or received a damaged disc, let us know. We'll
+            guide you through returns and exchanges or provide a refund
+            according to our policy.
+          </p>
+        </li>
+        <li>
+          <strong>Billing &amp; Payments:</strong>
+          <p>
+            Questions about charges or payment methods? We can clarify billing
+            details and payment options, or correct any errors.
+          </p>
+        </li>
+        <li>
+          <strong>Account Assistance:</strong>
+          <p>
+            Forgot your password or notice unusual activity? We can help reset
+            your password and secure your account.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Additional Resources</h2>
+      <ul>
+        <li>
+          <strong>FAQs:</strong>
+          <a href="#">Frequently Asked Questions</a> - Quick answers to shipping,
+          orders, and digital downloads.
+        </li>
+        <li>
+          <strong>Help Articles:</strong>
+          <a href="#">Browse Help Center</a> - Step-by-step guides on account settings,
+          watchlists, and premium features.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Our Promise</h2>
+      <p>
+        We want you to enjoy hassle-free browsing and purchasing of your
+        favorite films. If there's anything we can do to improve your
+        experience, please let us know. Our team is committed to providing
+        top-notch support and resolving your questions promptly.
+      </p>
+      <p>Thank you for choosing MovieDatabase, and happy viewing!</p>
+    </section>
   </main>
 </BaseLayout>
