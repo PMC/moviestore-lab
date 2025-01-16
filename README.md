@@ -25,6 +25,6 @@ All commands are run from the root of the project, from a terminal:
 
 - use tailwind if you want to: (https://tailwindcss.com/)
 
-## other resources (add if you find anything)
+## Other resources (add if you find anything)
 - Example themes from Astro own repo (https://github.com/withastro/astro/tree/latest/examples)
 
