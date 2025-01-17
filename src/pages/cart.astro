@@ -3,8 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 // Temporary cart data for illustration
 const cartTemp = [
-  {title: "Movie1", price: 12.99, quantity: 1,},
-  {title: "Movie2", price: 8.49, quantity: 2,},
+  { title: "Movie1", price: 12.99, quantity: 1 },
+  { title: "Movie2", price: 8.49, quantity: 2 },
 ];
 ---
 
@@ -15,7 +15,7 @@ const cartTemp = [
     <div id="cartContainer"></div>
 
     <form method="POST" action="#">
-      <input type="hidden" id="cartData" name="cartData" value={JSON.stringify(cartTemp)}/>
+      <input type="hidden" id="cartData" name="cartData" value={JSON.stringify(cartTemp)} />
 
       <h2>Customer Information</h2>
       <div>
@@ -35,8 +35,8 @@ const cartTemp = [
 
     <script is:inline>
       const cartTemp = [
-        {title: "Movie1", price: 12.99, quantity: 1,},
-        {title: "Movie2", price: 8.49, quantity: 2,},
+        { title: "Movie1", price: 12.99, quantity: 1 },
+        { title: "Movie2", price: 8.49, quantity: 2 },
       ];
       const cart = JSON.parse(JSON.stringify(cartTemp));
 
@@ -127,3 +127,11 @@ const cartTemp = [
     </script>
   </main>
 </BaseLayout>
+<style>
+  a:hover {
+    color: var(--pico-primary-focus);
+  }
+  ul {
+    margin-left: 1.5rem;
+  }
+</style>
