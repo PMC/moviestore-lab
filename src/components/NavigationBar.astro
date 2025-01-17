@@ -6,16 +6,13 @@
   <ul>
     <li><a href="./">TheMovieStore</a></li>
   </ul>
-  <form id="search-bar" action="./search" method="GET">
-    <input type="text" name="query" placeholder="Search movies..." aria-label="Search">
-  </form>
   <ul>
+    <li><input type="search" name="search" placeholder="Search" aria-label="Search" id="search-navbar" /></li>
     <li><a href="./categories">Categories</a></li>
     <li><a href="./contact">Contact</a></li>
     <li><a href="./cart">Cart</a></li>
   </ul>
 </nav>
-
 
 <style>
   a:hover {
@@ -32,5 +29,10 @@
     left: 0;
     right: 0;
     box-shadow: var(--pico-box-shadow);
+  }
+  #search-navbar {
+    top: 5px;
+    left: 150px;
+    width: auto;
   }
 </style>

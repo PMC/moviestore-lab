@@ -32,6 +32,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <label for="email-contact-form">Email</label>
         <input type="email" id="email-contact-form" name="email" required />
 
+        <label for="Topic">Topic</label>
+        <select name="Topic" aria-label="Select Topic" required>
+          <option selected disabled value=""> Select Topic, read below about common Topics ... </option>
+          <option>Account Assistance</option>
+          <option>Billing & Payments</option>
+          <option>Order Status</option>
+          <option>Refunds & Exchanges</option>
+          <option>Other...</option>
+        </select>
+
         <label for="message-contact-form">Message</label>
         <textarea id="message-contact-form" name="message" rows="5" required></textarea>
 
