@@ -1,10 +1,13 @@
 ---
-import Welcome from "../components/Welcome.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import MovieCarousel from "../components/MoviesList.jsx";
 ---
 
 <BaseLayout title="MovieStore-lab">
-  <Welcome />
+  <main>
+    <h1>Trending movies will come here</h1>
+    <MovieCarousel client:load />
+  </main>
 </BaseLayout>
 <style>
   a:hover {
