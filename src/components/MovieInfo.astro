@@ -13,31 +13,29 @@ const categories = await getCollection("MovieCategories");
 <section>
   {console.log(movie)}
   <article class="border-2 p-4">
-    <a href="./info">
-      <h1>
-        {movie.data.title} - ({movie.data.release_date.slice(0, 4)})
-      </h1>
-      <h5>
-        Rating: ({movie.data.vote_average}/10) - Votes: {movie.data.vote_count}{" "}
-      </h5>
-      <div class="grid">
-        <img src={`https://image.tmdb.org/t/p/w300${movie.data.poster_path}`} />
+    <h1>
+      {movie.data.title} - ({movie.data.release_date.slice(0, 4)})
+    </h1>
+    <h5>
+      Rating: ({movie.data.vote_average}/10) - Votes: {movie.data.vote_count}{" "}
+    </h5>
+    <div class="grid">
+      <img src={`https://image.tmdb.org/t/p/w300${movie.data.poster_path}`} />
 
-        <ul>
-          <li>
-            <strong>Overview:</strong>
-            {movie.data.overview}
-          </li>
-          <li>Release date: {movie.data.release_date}</li>
-          <li>Language: {movie.data.original_language.toUpperCase()}</li>
-          <li>Popularity: {movie.data.popularity}</li>
-          <li>
-            Categories:
-            {movie.data.genre_ids.map((c) => <b>{c},</b>)}
-          </li>
-        </ul>
-      </div>
-    </a>
+      <ul>
+        <li>
+          <strong>Overview:</strong>
+          {movie.data.overview}
+        </li>
+        <li>Release date: {movie.data.release_date}</li>
+        <li>Language: {movie.data.original_language.toUpperCase()}</li>
+        <li>Popularity: {movie.data.popularity}</li>
+        <li>
+          Categories:
+          {movie.data.genre_ids.map((c) => <b>{c},</b>)}
+        </li>
+      </ul>
+    </div>
     <footer>
       <button class="add-to-cart" data-movieid={movie.data.id}> Add to cart </button>
     </footer>
