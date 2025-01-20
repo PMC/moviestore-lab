@@ -16,7 +16,7 @@
       "video": false,
       "vote_average": 7.6,
       "vote_count": 548,
-      "trending":true
+      "trending": true
     },
     {
       "adult": false,
@@ -33,7 +33,7 @@
       "video": false,
       "vote_average": 7.41,
       "vote_count": 641,
-      "trending":true
+      "trending": true
     },
     {
       "adult": false,
@@ -50,7 +50,7 @@
       "video": false,
       "vote_average": 6.763,
       "vote_count": 2310,
-      "trending":true
+      "trending": true
     },
     {
       "adult": false,
@@ -67,7 +67,7 @@
       "video": false,
       "vote_average": 6.813,
       "vote_count": 2340,
-      "trending":true
+      "trending": true
     },
     {
       "adult": false,
@@ -277,7 +277,7 @@
       "video": false,
       "vote_average": 7.647,
       "vote_count": 6379,
-      "trending":true
+      "trending": true
     },
     {
       "adult": false,
@@ -665,22 +665,6 @@
     },
     {
       "adult": false,
-      "backdrop_path": "/5AsIFZ2AJC7JcGpq40aRPuRuaRc.jpg",
-      "genre_ids": [18],
-      "id": 1241752,
-      "original_language": "tl",
-      "original_title": "Rita",
-      "overview": "Rita, who finds herself alone when husband Ariel works abroad. They both find solace and sexual satisfaction in other people. When Ariel comes back, they both act like nothing happened. But will this keep their marriage from falling apart?",
-      "popularity": 350.996,
-      "poster_path": "/grIFQLXXwQmjvYYfXVXCgGTMUWw.jpg",
-      "release_date": "2024-03-22",
-      "title": "Rita",
-      "video": false,
-      "vote_average": 6.6,
-      "vote_count": 5
-    },
-    {
-      "adult": false,
       "backdrop_path": "/4cp40IyTpFfsT2IKpl0YlUkMBIR.jpg",
       "genre_ids": [10749, 35, 18],
       "id": 1064213,
@@ -745,22 +729,6 @@
     },
     {
       "adult": false,
-      "backdrop_path": "/dzY2ZYyPRbXcw8UOupHK3V5VQYk.jpg",
-      "genre_ids": [10749],
-      "id": 259872,
-      "original_language": "nl",
-      "original_title": "Des jours plus belles que la nuit",
-      "overview": "Real-life young couple Wim and Floor spend an afternoon in the sunwashed rooms of a crumbling home in Belgium. In a unique twist, this artistic erotic documentary is edited in nearly real-time. In the slowness, we get the build, the sweetness, and the sexiness. Forget about fingersnapping fast editing. Slow is where it’s at.",
-      "popularity": 377.681,
-      "poster_path": "/uCkANtG6ezb7hjRKVudY3PUcbvn.jpg",
-      "release_date": "2010-02-19",
-      "title": "Skin. Like. Sun.",
-      "video": false,
-      "vote_average": 6.4,
-      "vote_count": 30
-    },
-    {
-      "adult": false,
       "backdrop_path": "/9REO1DLpmwhrBJY3mYW5eVxkXFM.jpg",
       "genre_ids": [12, 18, 878],
       "id": 157336,
@@ -806,22 +774,6 @@
       "video": false,
       "vote_average": 6.058,
       "vote_count": 182
-    },
-    {
-      "adult": false,
-      "backdrop_path": "/w6MAE6cs8F62iAspnIqwVksAENM.jpg",
-      "genre_ids": [16, 12, 14],
-      "id": 1208491,
-      "original_language": "fr",
-      "original_title": "Zak & Wowo, la légende de Lendarys",
-      "overview": "At the heart of an imaginary world populated by fantastical creatures and dangerous monsters, the 13 year-old Zak goes in search of his twin brother Kyle, who has disappeared mysteriously. Equipped with a magical jade stone whose superpowers he doesn't yet know how to control, he is joined by his grandmother NaïNaï and Indiana, a beautiful outlaw who can communicate with the world's fantastical creatures. But he is also flanked by Wowo, formerly a 3 meter-tall furry pachyderm, now turned into a tiny, cute and wacky furball by the magical jade stone.",
-      "popularity": 324.005,
-      "poster_path": "/tgOq45Aijeup6mqEmOWGzYabaVQ.jpg",
-      "release_date": "2024-04-25",
-      "title": "Zak & Wowo: The Legend of Lendarys",
-      "video": false,
-      "vote_average": 7,
-      "vote_count": 3
     },
     {
       "adult": false,
@@ -1113,22 +1065,6 @@
     },
     {
       "adult": false,
-      "backdrop_path": "/vAAekmyeB9DpRKeJRZNbmIxoNKx.jpg",
-      "genre_ids": [10749, 18],
-      "id": 1055110,
-      "original_language": "ja",
-      "original_title": "扉を閉めた女教師",
-      "overview": "A sensual suspense that tells the story of a female teacher and a young student locked in a closed room in the middle of summer.",
-      "popularity": 255.124,
-      "poster_path": "/t0R81rsu2chPZEpKiHi8zbOOwR3.jpg",
-      "release_date": "2021-10-03",
-      "title": "Female Teacher Closing the Door",
-      "video": false,
-      "vote_average": 7,
-      "vote_count": 1
-    },
-    {
-      "adult": false,
       "backdrop_path": "/csQSGH0QU8D3Ov5YLEYuHep8ihA.jpg",
       "genre_ids": [878, 53, 12, 28],
       "id": 1196470,
@@ -1337,22 +1273,6 @@
     },
     {
       "adult": false,
-      "backdrop_path": "/eFlx3fW8FHXOktGa7Tzy57RajtG.jpg",
-      "genre_ids": [18, 10749],
-      "id": 1357459,
-      "original_language": "tl",
-      "original_title": "Tatsulok: Tatlo Magkasalo",
-      "overview": "Story about a happily married couple visited by an old friend, who ends up stirring the pot by becoming sexually involved with both the husband and the wife.",
-      "popularity": 221.606,
-      "poster_path": "/zcmPxGIBxxsGVyYuzNWPCWjlQ8X.jpg",
-      "release_date": "2024-10-11",
-      "title": "Tatsulok: Tatlo Magkasalo",
-      "video": false,
-      "vote_average": 6.2,
-      "vote_count": 4
-    },
-    {
-      "adult": false,
       "backdrop_path": "/uFMIiNYUDHzo7YGSg5UUR7VLNma.jpg",
       "genre_ids": [35],
       "id": 1278099,
@@ -1385,22 +1305,6 @@
     },
     {
       "adult": false,
-      "backdrop_path": "/d6HIjhk2f8BiZnVQ43gUv67khmX.jpg",
-      "genre_ids": [10749, 18],
-      "id": 1231813,
-      "original_language": "ko",
-      "original_title": "자매의 스와핑",
-      "overview": "Sisters Ji-soo and Ji-yeong decided to sell their used underwear due to financial difficulties. Perverted men offer to buy them at a higher price by asking these two sisters for shots of them wearing the underwear. Other men offer to pay even higher prices by demanding sex out of greater desire. As the sisters earn more money than expected, their service becomes more and more popular.",
-      "popularity": 309.659,
-      "poster_path": "/lqjkmFmV62JEUGKK7E1UwX7PDDT.jpg",
-      "release_date": "2023-12-19",
-      "title": "Sister Swapping",
-      "video": false,
-      "vote_average": 4.5,
-      "vote_count": 2
-    },
-    {
-      "adult": false,
       "backdrop_path": "/co7oxvpWxgd6FZU24DnljDDHYQA.jpg",
       "genre_ids": [878, 53],
       "id": 1064028,
@@ -1414,22 +1318,6 @@
       "video": false,
       "vote_average": 6.8,
       "vote_count": 542
-    },
-    {
-      "adult": false,
-      "backdrop_path": null,
-      "genre_ids": [18, 10749],
-      "id": 46848,
-      "original_language": "fr",
-      "original_title": "Collections privées",
-      "overview": "Three stories. A solitary sailor falls from his boat and washes ashore on a tropical island. While seeking rescue, he's found by a nearly naked woman who is playful and compliant. He decides to erase his signs of distress and remain on the island. What awaits?  In the second, an adolescent searches for the words of a nursery rime he remembers bits of. His journey takes him into dreams, sexual awakening, and Oedipal fantasy.  Third, a man of wealth in late-nineteenth century Paris hires a prostitute for the night. She's also cabaret performer and takes him to her room. He fears he's about to be robbed. What's her secret?",
-      "popularity": 171.835,
-      "poster_path": "/qHm5qK7bNyK0EgwE2qHps38yNQc.jpg",
-      "release_date": "1979-06-27",
-      "title": "Private Collections",
-      "video": false,
-      "vote_average": 6.05,
-      "vote_count": 20
     },
     {
       "adult": false,
@@ -1478,22 +1366,6 @@
       "video": false,
       "vote_average": 7.1,
       "vote_count": 3454
-    },
-    {
-      "adult": false,
-      "backdrop_path": "/wcUohmHc9oDZXarXDp905TYVui4.jpg",
-      "genre_ids": [18, 10749],
-      "id": 82023,
-      "original_language": "de",
-      "original_title": "Hotel Desire",
-      "overview": "Antonia is a single mother who works as a hotel maid in Berlin. A normal hot summer day takes a dramatic turn when she crosses paths with a particular guest of the hotel, famous blind portrait painter Julius Pass.",
-      "popularity": 193.165,
-      "poster_path": "/myzQj8Rk178DrWsiZjVKjz7Kj9P.jpg",
-      "release_date": "2011-12-07",
-      "title": "Hotel Desire",
-      "video": false,
-      "vote_average": 6,
-      "vote_count": 115
     },
     {
       "adult": false,
@@ -1830,22 +1702,6 @@
       "video": false,
       "vote_average": 4.9,
       "vote_count": 14
-    },
-    {
-      "adult": false,
-      "backdrop_path": "/qoxriJ6n1qxvG1bBMPnsZBHKGco.jpg",
-      "genre_ids": [10749, 18, 14],
-      "id": 11845,
-      "original_language": "en",
-      "original_title": "Intimacy",
-      "overview": "Jay, a failed musician, walked out of his family and now earns a living as head bartender in a trendy London pub. Every Wednesday afternoon a woman comes to his house for graphic, almost wordless, sex. One day Jay follows her and finds out about the rest of her life. This eventually disrupts their relationship.",
-      "popularity": 182.84,
-      "poster_path": "/I0mlv1FahaLJqu2ByffMXEn4NN.jpg",
-      "release_date": "2001-01-20",
-      "title": "Intimacy",
-      "video": false,
-      "vote_average": 6.3,
-      "vote_count": 509
     }
   ],
   "total_pages": 48173,
