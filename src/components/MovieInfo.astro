@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
 interface Props {
-  movieid: string;
+  movieid: number;
 }
 
 const movie = (await getCollection("apiMovies")).find((m) => m.id === Astro.props.movieid);
