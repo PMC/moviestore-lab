@@ -1,44 +1,78 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-
 interface Props {
   movieid: string;
 }
+import { API_SECRET_TOKEN } from "astro:env/server";
 
-const movie = (await getCollection("apiMovies")).find((m) => m.id === Astro.props.movieid);
-const categories = await getCollection("MovieCategories");
+const fetchData = async () => {
+  try {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${Astro.props.movieid}`, {
+      headers: {
+        Authorization: `Bearer ${API_SECRET_TOKEN}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return null;
+  }
+};
+
+const movie = await fetchData();
+
+//const movie = (await getCollection("apiMovies")).find((m) => m.id === Astro.props.movieid);
 ---
 
 <section>
   {console.log(movie)}
   <article class="border-2 p-4">
     <h1>
-      {movie.data.title}
+      {movie.title}
     </h1>
     <h5>
-      Rating: ({movie.data.vote_average}/10) - Votes: {movie.data.vote_count}{" "}
+      Rating: ({movie.vote_average}/10) - Votes: {movie.vote_count}{" "}
     </h5>
     <div class="grid">
-      <img src={`https://image.tmdb.org/t/p/w300${movie.data.poster_path}`} />
+      <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} />
 
       <ul>
         <li>
+          <strong>Tagline:</strong>
+          {movie.tagline}
+        </li>
+        <li>
           <strong>Overview:</strong>
-          {movie.data.overview}
+          {movie.overview}
         </li>
         <hr />
-        <li>Release date: {movie.data.release_date}</li>
-        <li>Language: {movie.data.original_language.toUpperCase()}</li>
-        <li>Popularity: {movie.data.popularity}</li>
+        <li>Release date: {movie.release_date}</li>
+        <li>Language: {movie.original_language.toUpperCase()}</li>
+        <li>Popularity: {movie.popularity}</li>
         <li>
           Categories:
-          {movie.data.genre_ids.map((c) => <b>{c},</b>)}
+          {movie.genres.map((c) => <b>{c.name}, </b>)}
+        </li>
+        <li><a href={movie.homepage}>Homepage: {movie.homepage}</a></li>
+        <li>
+          <a href={`https://www.imdb.com/title/${movie.imdb_id}`}
+            >Imdb: {`https://www.imdb.com/title/${movie.imdb_id}`}</a
+          >
+        </li>
+        <li>Popularity: {movie.popularity}</li>
+        <li>
+          Production Company:
+          {movie.production_companies.map((c) => <b>{c.name}, </b>)}
         </li>
       </ul>
     </div>
     <footer>
-      <button class="add-to-cart" data-movieid={movie.data.id}> Add to cart </button>
+      <button class="add-to-cart" data-movieid={movie.id}> Add to cart </button>
     </footer>
   </article>
 </section>
