@@ -14,7 +14,7 @@ const categories = await getCollection("MovieCategories");
   {console.log(movie)}
   <article class="border-2 p-4">
     <h1>
-      {movie.data.title} - ({movie.data.release_date.slice(0, 4)})
+      {movie.data.title}
     </h1>
     <h5>
       Rating: ({movie.data.vote_average}/10) - Votes: {movie.data.vote_count}{" "}
