@@ -13,6 +13,13 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## API
+
+In the root of this project you need to create a file called ".env" and put the following in it<br>
+<code>
+API_SECRET_TOKEN = "YOUR API FROM TMDB.org"
+</code>
+
 ## 👀 Want to learn more?
 
 - Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
