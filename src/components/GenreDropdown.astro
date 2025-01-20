@@ -19,8 +19,8 @@ const myCat = await getCollection("movieCategories");
       myCat.map((m) => (
         <li>
           <label>
-            <input id="filter-"{`${m.id}`} type="radio" name="genre" value={`${m.id}`} />
-            {`${m.data.name}`}
+            <input id="filter-" type="radio" name="genre" value={`${m.id}`} />
+            {m.data.name}
           </label>
         </li>
       ))
