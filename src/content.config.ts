@@ -9,7 +9,13 @@ const movieInfo = defineCollection({
     loader: file("src/content/939243.json", { parser: (text) => JSON.parse(text).results })
 });
 
+const MovieCategories = defineCollection({
+    loader: file("src/content/categories.json", { parser: (text) => JSON.parse(text).results })
+});
+
+
+
 
  export const collections = {
-     apiMovies,movieInfo
+     apiMovies, movieInfo, MovieCategories
  };
