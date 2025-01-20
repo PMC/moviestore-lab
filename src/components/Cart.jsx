@@ -141,19 +141,6 @@ const Cart = () => {
                 </div>
                 <button type="submit">Buy Now</button>
             </form>
-            {/* Example Add Movie Button */}
-            <div>
-                <h2>Add Movies</h2>
-                {moviesArray.map((movie) => (
-                    <button
-                        key={movie.id}
-                        onClick={() => addMovie(movie.id)}
-                        style={{ margin: '5px' }}
-                    >
-                        Add {movie.title}
-                    </button>
-                ))}
-            </div>
         </div>
     );
 };
