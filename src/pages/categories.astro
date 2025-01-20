@@ -12,18 +12,20 @@ const movies = await getCollection("apiMovies");
       {
         movies.map((m) => (
           <article>
-            <h1>
-              {m.data.title} - ({m.data.release_date.slice(0, 4)})
-            </h1>
-            <h5>
-              Rating: ({m.data.vote_average}/10) - Votes: {m.data.vote_count}{" "}
-            </h5>
-            <div class="grid">
-              <img src="https://m.media-amazon.com/images/I/812LsdgHbnL._AC_UL320_.jpg" />
-              <p>
-                <strong>Overview:</strong> {m.data.overview}
-              </p>
-            </div>
+            <a href="./info">
+              <h1>
+                {m.data.title} - ({m.data.release_date.slice(0, 4)})
+              </h1>
+              <h5>
+                Rating: ({m.data.vote_average}/10) - Votes: {m.data.vote_count}{" "}
+              </h5>
+              <div class="grid">
+                <img src="https://m.media-amazon.com/images/I/812LsdgHbnL._AC_UL320_.jpg" />
+                <p>
+                  <strong>Overview:</strong> {m.data.overview}
+                </p>
+              </div>
+            </a>
             <footer>
               <button>add to cart</button>
             </footer>
@@ -46,5 +48,8 @@ const movies = await getCollection("apiMovies");
   }
   ul {
     margin-left: 1.5rem;
+  }
+  article p {
+    color: var(--pico-h3-color);
   }
 </style>
