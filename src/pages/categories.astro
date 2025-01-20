@@ -11,7 +11,7 @@ const movies = await getCollection("apiMovies");
     <section>
       {
         movies.map((m) => (
-          <article>
+          <article class="border-2 p-4">
             <a href="./info">
               <h1>
                 {m.data.title} - ({m.data.release_date.slice(0, 4)})
@@ -21,9 +21,20 @@ const movies = await getCollection("apiMovies");
               </h5>
               <div class="grid">
                 <img src="https://m.media-amazon.com/images/I/812LsdgHbnL._AC_UL320_.jpg" />
-                <p>
-                  <strong>Overview:</strong> {m.data.overview}
-                </p>
+                <ul>
+                  <li>
+                    <strong>Overview:</strong> {m.data.overview}
+                  </li>
+                  <li>Release date: {m.data.release_date}</li>
+                  <li>Language: {m.data.original_language.toUpperCase()}</li>
+                  <li>Popularity: {m.data.popularity}</li>
+                  <li>
+                    Categories:
+                    {m.data.genre_ids.map((c) => (
+                      <b>{c},</b>
+                    ))}
+                  </li>
+                </ul>
               </div>
             </a>
             <footer>
@@ -43,13 +54,17 @@ const movies = await getCollection("apiMovies");
   </main>
 </BaseLayout>
 <style>
+  article {
+    border-color: rgba(0, 0, 0, 0.432);
+  }
   a:hover {
     color: var(--pico-primary-focus);
   }
   ul {
     margin-left: 1.5rem;
   }
-  article p {
+  article p,
+  article ul {
     color: var(--pico-h3-color);
   }
 </style>
