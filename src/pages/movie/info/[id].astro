@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import MovieInfo from "../../../components/MovieInfo.astro";
+
+export const prerender = false;
+const { id } = Astro.params;
+---
+
+<BaseLayout title="MovieStore-lab">
+  <main>
+    <MovieInfo movieid={id} />
+  </main>
+</BaseLayout>
