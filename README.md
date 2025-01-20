@@ -24,4 +24,4 @@ All commands are run from the root of the project, from a terminal:
 - Picocss documentation (https://picocss.com/docs)
 - Use tailwind if you want to: (https://tailwindcss.com/)
 - Example themes from Astro own repo (https://github.com/withastro/astro/tree/latest/examples)
-
+- Live Code: Dev Learning Portfolio App in Astro (https://www.youtube.com/watch?v=4xJsAgQYVkE)
