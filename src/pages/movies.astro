@@ -28,7 +28,9 @@ movies.sort((a, b) => a.data.title.localeCompare(b.data.title));
 <BaseLayout title="MovieStore-lab">
   <main class="container-fluid">
     <section class="grid" id="movies-grid">
-      {
+      {movies.length === 0 ? (
+        <p>Sorry, No results found for "{searchQuery}"</p>
+      ) : (
         movies.map((m) => (
           <article
             class="border-2 p-4"
@@ -54,7 +56,7 @@ movies.sort((a, b) => a.data.title.localeCompare(b.data.title));
             </div>
           </article>
         ))
-      }
+      )}
     </section>
   </main>
   <script is:inline>
