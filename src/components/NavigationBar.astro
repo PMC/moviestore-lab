@@ -8,7 +8,17 @@ import GenreDropdown from "../components/GenreDropdown.astro";
   </ul>
   <ul>
     <li>
-      <input type="search" name="search" placeholder="Search" aria-label="Search" id="search-navbar" />
+      <!-- A simple GET form that sends ?search=... to /movies -->
+      <form action="/movies" method="get" style="display: inline;">
+        <input 
+          type="search" 
+          name="search" 
+          placeholder="Search" 
+          aria-label="Search" 
+          id="search-navbar" 
+          minlength="2"
+        />
+      </form>
     </li>
     <GenreDropdown />
     <li><a href="/contact">Contact</a></li>
