@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import moviesData from '../content/movies.json';
 
 const Cart = () => {
@@ -7,6 +7,18 @@ const Cart = () => {
 
     // Initial cart data
     const [cart, setCart] = useState([]);
+
+    // On mount, pull cart data from localStorage (if any)
+    useEffect(() => {
+        const storedCart = localStorage.getItem('cart');
+        if (storedCart) {
+            setCart(JSON.parse(storedCart));
+        }
+    }, []);
+    // Whenever cart changes, store it in localStorage
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]);
 
     const prices = [5, 5.25, 5.5, 5.75, 5.99, 6, 6.25, 6.5, 6.75, 6.99];
 
@@ -39,18 +51,16 @@ const Cart = () => {
         setCart((prevCart) => prevCart.filter((item) => item.id !== id));
     };
 
-    // Add a movie to the cart
+    // Add a movie
     const addMovie = (id) => {
         const movieExists = cart.some((item) => item.id === id);
         if (movieExists) {
-            // Increment quantity if the movie already exists
             setCart((prevCart) =>
                 prevCart.map((item) =>
                     item.id === id ? { ...item, quantity: item.quantity + 1 } : item
                 )
             );
         } else {
-            // Add a new movie to the cart
             setCart((prevCart) => [...prevCart, { id, quantity: 1 }]);
         }
     };
