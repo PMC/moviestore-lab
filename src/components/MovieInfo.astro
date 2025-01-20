@@ -21,7 +21,7 @@ const categories = await getCollection("MovieCategories");
         Rating: ({movie.data.vote_average}/10) - Votes: {movie.data.vote_count}{" "}
       </h5>
       <div class="grid">
-        <img src={`https://image.tmdb.org/t/p/w200${movie.data.poster_path}`} />
+        <img src={`https://image.tmdb.org/t/p/w300${movie.data.poster_path}`} />
 
         <ul>
           <li>
