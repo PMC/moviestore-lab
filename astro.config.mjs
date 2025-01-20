@@ -6,7 +6,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  output: "static",
+  output: "server",
   adapter: node({
     // mode: 'standalone' or 'serverless'
     mode: 'standalone',

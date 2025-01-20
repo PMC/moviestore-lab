@@ -2,11 +2,23 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
-const movies = (await getCollection("apiMovies")).sort((a, b) => {
-  if (b.data.title > a.data.title) return -1;
-  if (a.data.title > b.data.title) return 1;
-  return 0;
-});
+const url = new URL(Astro.request.url);
+const genre = url.searchParams.get("genre") || "all";
+const searchQuery = (url.searchParams.get("search") || "").toLowerCase();
+
+let movies = await getCollection("apiMovies");
+
+if (genre !== "all") {
+  movies = movies.filter((m) => m.data.genre_ids.includes(parseInt(genre)));
+}
+
+if (searchQuery.length >= 2) {
+  movies = movies.filter((m) =>
+    m.data.title.toLowerCase().includes(searchQuery),
+  );
+}
+
+movies.sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 
 <BaseLayout title="MovieStore-lab">
@@ -14,19 +26,21 @@ const movies = (await getCollection("apiMovies")).sort((a, b) => {
     <section class="grid" id="movies-grid">
       {
         movies.map((m) => (
-          <article 
-            class="border-2 p-4" 
+          <article
+            class="border-2 p-4"
             data-genreids={m.data.genre_ids.join(",")}
             data-title={m.data.title.toLowerCase()}
-            >
-            <a href={`./movie/info/${m.id}`}>
-              <img src={`https://image.tmdb.org/t/p/w300${m.data.poster_path}`} />
+          >
+            <a href={`/movie/info/${m.id}`}>
+              <img
+                src={`https://image.tmdb.org/t/p/w300${m.data.poster_path}`}
+              />
               <h1>
                 {m.data.title} ({m.data.release_date.slice(0, 4)})
               </h1>
-
               <h2>
-                - Rating: ({m.data.vote_average}/10) - Votes: {m.data.vote_count}{" "}
+                - Rating: ({m.data.vote_average}/10) - Votes:{" "}
+                {m.data.vote_count}
               </h2>
             </a>
             <div class="buttonArea">
@@ -40,7 +54,6 @@ const movies = (await getCollection("apiMovies")).sort((a, b) => {
     </section>
   </main>
   <script is:inline>
-    // Wait for the DOM to load
     document.addEventListener("DOMContentLoaded", () => {
       const buttons = document.querySelectorAll(".add-to-cart");
       buttons.forEach((btn) => {
@@ -55,41 +68,10 @@ const movies = (await getCollection("apiMovies")).sort((a, b) => {
             cart.push({ id: movieId, quantity: 1 });
           }
 
-          // Save back to localStorage
           localStorage.setItem("cart", JSON.stringify(cart));
           alert("Movie added to cart!");
         });
       });
-
-      const params = new URLSearchParams(window.location.search);
-      const searchParam = params.get("search")?.toLowerCase() || "";
-      
-      if (searchParam.length >= 2) {
-        const articles = document.querySelectorAll("#movies-grid article");
-        articles.forEach((article) => {
-          const title = article.getAttribute("data-title");
-          if (!title.includes(searchParam)) {
-            article.style.display = "none";
-          }
-        });
-      }
-
-      const selectedGenre = params.get("genre");
-      if (selectedGenre) {
-        filterByGenre(selectedGenre);
-      }
-
-      function filterByGenre(genreId) {
-        const articles = document.querySelectorAll("article[data-genreids]");
-        articles.forEach((article) => {
-          const genreIds = article.getAttribute("data-genreids").split(",");
-          if (genreId === "all" || genreIds.includes(genreId)) {
-            article.style.display = "block";
-          } else {
-            article.style.display = "none";
-          }
-        });
-      }
     });
   </script>
 </BaseLayout>
