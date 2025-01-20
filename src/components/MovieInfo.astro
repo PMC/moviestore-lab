@@ -64,7 +64,6 @@ const movie = await fetchData();
             >Imdb: {`https://www.imdb.com/title/${movie.imdb_id}`}</a
           >
         </li>
-        <li>Popularity: {movie.popularity}</li>
         <li>
           Production Company:
           {movie.production_companies.map((c) => <b>{c.name}, </b>)}
