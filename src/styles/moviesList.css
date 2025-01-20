@@ -1,34 +1,72 @@
-/* src/styles/movieCarousel.css */
-.movie-carousel {
+.movie-page-horizontal {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
 }
 
-.carousel-button {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
+.trending-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.trending-movie img {
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.carousel-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .carousel-items {
   display: flex;
-  overflow: hidden;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 15px;
 }
 
 .movie-item {
-  width: 23%;
+  flex: 1 0 calc(10% - 10px); /* Adjust the width for 10 items per row */
+  max-width: 150px; /* Limit the width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movie-poster {
+  width: 150px;
+  height: 200px;
+  object-fit: contain;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.movie-poster:hover {
+  transform: scale(1.1);
+}
+
+h4 {
+  font-size: 14px;
+  font-weight: bold;
   text-align: center;
-}
-
-.movie-item img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.carousel-button:focus {
-  outline: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px; /* Adjust to the image width */
 }

@@ -1,20 +1,32 @@
-import React, { useState } from "react";
-import moviesData from "../content/movies.json"; // Import movies data
-import "../styles/moviesList.css";
+import React, { useState } from 'react';
+import moviesData from '../content/movies.json';
+import '../styles/moviesList.css';
 
-const itemsPerPage = 4;
+const itemsPerPage = 6;
 
 function MovieCarousel() {
   const [startIndex, setStartIndex] = useState(0);
-  const movies = moviesData.results;
+  const [trendingIndex, setTrendingIndex] = useState(0);
 
+  const movies = moviesData.results;
+  const trendingMovies = movies.filter((movie) => movie.trending);
   const currentMovies = movies.slice(startIndex, startIndex + itemsPerPage);
 
+  const truncateTitle = (title, maxLength) =>
+    title.length > maxLength ? `${title.slice(0, maxLength)}...` : title;
+
+  function startSlideshow() {
+    setInterval(() => {
+      setTrendingIndex((prevIndex) => (prevIndex + 1) % trendingMovies.length);
+    }, 5000);
+  }
+
+  if (!trendingMovies._slideshowStarted) {
+    trendingMovies._slideshowStarted = true;
+    startSlideshow();
+  }
+
   function goToNextPage() {
-    console.log("Button clicked!");
-    console.log(
-      "goToNextPage startIndex: " + startIndex + " itemsPerPage: " + itemsPerPage + " length: " + movies.length
-    );
     if (startIndex + itemsPerPage < movies.length) {
       setStartIndex(startIndex + itemsPerPage);
     }
@@ -27,29 +39,55 @@ function MovieCarousel() {
   }
 
   return (
-    <div className="movie-carousel">
-      <button onClick={goToPreviousPage}>←</button>
-
-      <div className="carousel-items">
-        {currentMovies.length > 0 ? (
-          currentMovies.map((movie) => (
-            <div className="movie-item" key={movie.id}>
-              <a href={`./movie/info/${movie.id}`}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                  alt={movie.title}
-                  className="movie-poster"
-                />
-                <h3>{movie.title}</h3>
-              </a>
-            </div>
-          ))
+    <div className="movie-page-horizontal">
+      <div className="trending-section">
+        <h2>Trending</h2>
+        {trendingMovies.length > 0 ? (
+          <div className="trending-movie">
+            <img
+              src={`https://image.tmdb.org/t/p/w300${trendingMovies[trendingIndex].poster_path}`}
+              alt={trendingMovies[trendingIndex].title}
+              style={{ width: '300px', height: '400px', objectFit: 'contain' }}
+            />
+            <h3 style={{position:"relative"}}>{trendingMovies[trendingIndex].title}</h3>
+          </div>
         ) : (
-          <p>No movies available</p>
+          <p>No trending movies available</p>
         )}
       </div>
 
-      <button onClick={goToNextPage}>→</button>
+      <div className="carousel-section">
+        <h2>All Movies</h2>
+        <div className="carousel-wrapper">
+          <button onClick={goToPreviousPage}>←</button>
+
+          <div className="carousel-items">
+            {currentMovies.length > 0 ? (
+              currentMovies.map((movie) => (
+                <div className="movie-item" key={movie.id}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                    alt={movie.title}
+                    className="movie-poster"
+                    style={{
+                      width: '150px',
+                      height: '200px',
+                      objectFit: 'contain',
+                      border: '1px solid #ddd',
+                      borderRadius: '8px',
+                    }}
+                  />
+                  <h4>{truncateTitle(movie.title, 20)}</h4>
+                </div>
+              ))
+            ) : (
+              <p>No movies available</p>
+            )}
+          </div>
+
+          <button onClick={goToNextPage}>→</button>
+        </div>
+      </div>
     </div>
   );
 }
