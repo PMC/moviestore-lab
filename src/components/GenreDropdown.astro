@@ -1,7 +1,9 @@
 ---
-/**
- * GenreDropdown.astro
- */
+import { getCollection } from "astro:content";
+import { makeIssue } from "astro:schema";
+import { manifest } from "astro:ssr-manifest";
+
+const myCat = await getCollection("movieCategories");
 ---
 
 <details class="dropdown">
@@ -13,108 +15,16 @@
         All
       </label>
     </li>
-    <li>
-      <label>
-        <input id="filter-28" type="radio" name="genre" value="28" />
-        Action
-      </label>
-    </li>
-    <li>
-      <label>
-        <input id="filter-12" type="radio" name="genre" value="12" />
-        Adventure
-      </label>
-    </li>
-    <li>
-      <label>
-        <input id="filter-16" type="radio" name="genre" value="16" />
-        Animation
-      </label>
-    </li>
-    <li>
-      <label>
-        <input id="filter-35" type="radio" name="genre" value="35" />
-        Comedy
-      </label>
-    </li>
-    <li>
-      <label>
-        <input id="filter-80" type="radio" name="genre" value="80" />
-        Crime
-      </label>
-    </li>
-    <li>
-      <label>
-        <input id="filter-99" type="radio" name="genre" value="99" />
-        Documentary
-      </label>
-    </li>
-    <li>
-      <label>
-        <input id="filter-18" type="radio" name="genre" value="18" />
-        Drama
-      </label>
-    </li>
-    <li>
-      <label>
-        <input id="filter-10751" type="radio" name="genre" value="10751" />
-        Family
-      </label>
-    </li>
-    <li>
-      <label>
-        <input id="filter-14" type="radio" name="genre" value="14" />
-        Fantasy
-      </label>
-    </li>
-    <li>
-      <label>
-        <input id="filter-36" type="radio" name="genre" value="36" />
-        History
-      </label>
-    </li>
-    <li>
-      <label>
-        <input id="filter-27" type="radio" name="genre" value="27" />
-        Horror
-      </label>
-    </li>
-    <li>
-      <label>
-        <input id="filter-9648" type="radio" name="genre" value="9648" />
-        Mystery
-      </label>
-    </li>
-    <li>
-      <label>
-        <input id="filter-10749" type="radio" name="genre" value="10749" />
-        Romance
-      </label>
-    </li>
-    <li>
-      <label>
-        <input id="filter-878" type="radio" name="genre" value="878" />
-        Science Fiction
-      </label>
-    </li>
-    <li>
-      <label>
-        <input id="filter-53" type="radio" name="genre" value="53" />
-        Thriller
-      </label>
-    </li>
-    <li>
-      <label>
-        <input id="filter-10752" type="radio" name="genre" value="10752" />
-        War
-      </label>
-    </li>
-    <li>
-      <label>
-        <input id="filter-37" type="radio" name="genre" value="37" />
-        Western
-      </label>
-    </li>
+    {
+      myCat.map((m) => (
+        <li>
+          <label>
+            <input id="filter-"{`${m.id}`} type="radio" name="genre" value={`${m.id}`} />
+            {`${m.data.name}`}
+          </label>
+        </li>
+      ))
+    }
   </ul>
 </details>
 
