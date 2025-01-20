@@ -1,0 +1,34 @@
+/* src/styles/movieCarousel.css */
+.movie-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.carousel-button {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.carousel-items {
+  display: flex;
+  overflow: hidden;
+  justify-content: space-between;
+}
+
+.movie-item {
+  width: 23%;
+  text-align: center;
+}
+
+.movie-item img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.carousel-button:focus {
+  outline: none;
+}
