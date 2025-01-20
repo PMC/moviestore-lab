@@ -43,6 +43,33 @@ const categories = await getCollection("MovieCategories");
     </footer>
   </article>
 </section>
+<script is:inline>
+  // Wait for the DOM to load
+  document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".add-to-cart");
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const movieId = parseInt(btn.getAttribute("data-movieid"));
+
+        // Parse the cart from localStorage (or start a new one)
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Check if item is already in cart
+        const existingItem = cart.find((item) => item.id === movieId);
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({ id: movieId, quantity: 1 });
+        }
+
+        // Save back to localStorage
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert("Movie added to cart!");
+      });
+    });
+  });
+</script>
 <style>
   article {
     border-color: rgba(0, 0, 0, 0.432);
