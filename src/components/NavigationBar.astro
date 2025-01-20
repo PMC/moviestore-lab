@@ -1,5 +1,5 @@
 ---
-
+import GenreDropdown from "../components/GenreDropdown.astro";
 ---
 
 <nav id="topnav">
@@ -7,7 +7,12 @@
     <li><a href="/">TheMovieStore</a></li>
   </ul>
   <ul>
-    <li><input type="search" name="search" placeholder="Search" aria-label="Search" id="search-navbar" /></li>
+    <li>
+      <GenreDropdown />
+    </li>
+    <li>
+      <input type="search" name="search" placeholder="Search" aria-label="Search" id="search-navbar"/>
+    </li>
     <li><a href="/categories">Categories</a></li>
     <li><a href="/contact">Contact</a></li>
     <li><a href="/checkout">Checkout</a></li>
@@ -30,11 +35,9 @@
   #topnav a {
     color: lightgray;
   }
-
   #topnav a:hover {
     color: var(--pico-primary-focus);
   }
-
   #search-navbar {
     top: 5px;
     left: 150px;
