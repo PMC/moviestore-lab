@@ -8,10 +8,15 @@ const categories = await getCollection("MovieCategories");
 
 <BaseLayout title="MovieStore-lab">
   <main class="container-fluid">
+    <!-- Checkboxes -->
+
     <section>
       {
         movies.map((m) => (
-          <article class="border-2 p-4">
+          <article
+            class="border-2 p-4"
+            data-genreids={m.data.genre_ids.join(",")}
+          >
             <a href="./info">
               <h1>
                 {m.data.title} - ({m.data.release_date.slice(0, 4)})
@@ -20,7 +25,9 @@ const categories = await getCollection("MovieCategories");
                 Rating: ({m.data.vote_average}/10) - Votes: {m.data.vote_count}{" "}
               </h5>
               <div class="grid">
-                <img src={`https://image.tmdb.org/t/p/w200${m.data.poster_path}`} />
+                <img
+                  src={`https://image.tmdb.org/t/p/w200${m.data.poster_path}`}
+                />
 
                 <ul>
                   <li>
@@ -47,13 +54,6 @@ const categories = await getCollection("MovieCategories");
         ))
       }
     </section>
-    <blockquote>
-      Contact is a funny word. Some people think design means how it looks. But of course, if you dig deeper, it's
-      really how it works.”
-      <footer>
-        <cite>— Steve Jobs</cite>
-      </footer>
-    </blockquote>
   </main>
   <script is:inline>
     // Wait for the DOM to load
@@ -80,6 +80,25 @@ const categories = await getCollection("MovieCategories");
           alert("Movie added to cart!");
         });
       });
+
+      function filterByGenre(genreId) {
+        const articles = document.querySelectorAll("article[data-genreids]");
+        articles.forEach((article) => {
+          const genreIds = article.getAttribute("data-genreids").split(",");
+          if (genreId === "all" || genreIds.includes(genreId)) {
+            article.style.display = "block";
+          } else {
+            article.style.display = "none";
+          }
+        });
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      const selectedGenre = params.get("genre");
+
+      if (selectedGenre) {
+        filterByGenre(selectedGenre);
+      }
     });
   </script>
 </BaseLayout>
