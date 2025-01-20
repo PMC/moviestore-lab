@@ -24,12 +24,14 @@ const Cart = () => {
 
     const getNumericPrice = (id) => {
         const movie = moviesArray.find((movie) => movie.id === id);
-        // Convert average to something we can index into prices[]
+      
+        if (!movie || typeof movie.vote_average === 'undefined') {
+          return 0;
+        }
+      
         const voteINT = Number(movie.vote_average).toPrecision(1);
-        // Fallback to 0 if we can’t find a valid index
-        if (!voteINT || !prices[voteINT]) return 0;
-        return prices[voteINT];
-    };
+        return prices[voteINT] || 0;
+      };
 
     // Return a formatted string like "5.25$"
     const createMoviePrice = (id) => {
