@@ -27,6 +27,7 @@ const categories = await getCollection("MovieCategories");
           <strong>Overview:</strong>
           {movie.data.overview}
         </li>
+        <hr />
         <li>Release date: {movie.data.release_date}</li>
         <li>Language: {movie.data.original_language.toUpperCase()}</li>
         <li>Popularity: {movie.data.popularity}</li>
@@ -69,6 +70,12 @@ const categories = await getCollection("MovieCategories");
   });
 </script>
 <style>
+  div {
+    grid-template-columns: minmax(300px, 320px) minmax(300px, 1fr);
+    @media (width <= 680px) {
+      grid-template-columns: 1fr;
+    }
+  }
   article {
     border-color: rgba(0, 0, 0, 0.432);
   }
