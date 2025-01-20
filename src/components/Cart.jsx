@@ -24,14 +24,14 @@ const Cart = () => {
 
     const getNumericPrice = (id) => {
         const movie = moviesArray.find((movie) => movie.id === id);
-      
+
         if (!movie || typeof movie.vote_average === 'undefined') {
-          return 0;
+            return 0;
         }
-      
+
         const voteINT = Number(movie.vote_average).toPrecision(1);
         return prices[voteINT] || 0;
-      };
+    };
 
     // Return a formatted string like "5.25$"
     const createMoviePrice = (id) => {
@@ -42,6 +42,12 @@ const Cart = () => {
     const getMovieTitle = (id) => {
         const movie = moviesArray.find((movie) => movie.id === id);
         return movie ? movie.title : 'Unknown Title';
+    };
+
+    const getMovieImage = (id) => {
+        const movie = moviesArray.find((movie) => movie.id === id);
+        const imgUrl = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
+        return imgUrl;
     };
 
     // Handle quantity updates
@@ -95,7 +101,10 @@ const Cart = () => {
                 <tbody>
                     {cart.map((item) => (
                         <tr key={item.id}>
-                            <td>{getMovieTitle(item.id)}</td>
+                            <td>
+                                <img src={getMovieImage(item.id)} alt="img" />
+                                {getMovieTitle(item.id)}
+                            </td>
                             <td>{item.quantity}</td>
                             <td>{createMoviePrice(item.id)}</td>
                             <td>
@@ -115,7 +124,7 @@ const Cart = () => {
             </table>
 
             <h3>Grand Total: ${grandTotal.toFixed(2)}</h3>
-            
+
             <form method="POST" action="#">
                 <h2>Customer Information</h2>
                 <div>
