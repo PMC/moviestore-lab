@@ -15,7 +15,7 @@ All commands are run from the root of the project, from a terminal:
 
 ## API
 
-In the root of this project you need to create a file called ".env" and put the following in it
+In the root of this project you need to create a file called ".env" and put the following in it:
 <code>
 API_SECRET_TOKEN = "YOUR API FROM TMDB.org"
 </code>
