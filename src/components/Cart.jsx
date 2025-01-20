@@ -22,11 +22,18 @@ const Cart = () => {
 
     const prices = [5, 5.25, 5.5, 5.75, 5.99, 6, 6.25, 6.5, 6.75, 6.99];
 
-    // Find movie title by ID
-    const createMoviePrice = (id) => {
+    const getNumericPrice = (id) => {
         const movie = moviesArray.find((movie) => movie.id === id);
+        // Convert average to something we can index into prices[]
         const voteINT = Number(movie.vote_average).toPrecision(1);
-        return voteINT ? prices[voteINT] + '$' : 'Unknown Price';
+        // Fallback to 0 if we can’t find a valid index
+        if (!voteINT || !prices[voteINT]) return 0;
+        return prices[voteINT];
+    };
+
+    // Return a formatted string like "5.25$"
+    const createMoviePrice = (id) => {
+        return `${getNumericPrice(id).toFixed(2)}$`;
     };
 
     // Find movie title by ID
@@ -65,6 +72,12 @@ const Cart = () => {
         }
     };
 
+    // Calculate grand total
+    const grandTotal = cart.reduce((sum, item) => {
+        const price = getNumericPrice(item.id);
+        return sum + price * item.quantity;
+    }, 0);
+
     return (
         <div className="container checkout-page">
             <h1>Checkout</h1>
@@ -98,6 +111,9 @@ const Cart = () => {
                     ))}
                 </tbody>
             </table>
+
+            <h3>Grand Total: ${grandTotal.toFixed(2)}</h3>
+            
             <form method="POST" action="#">
                 <h2>Customer Information</h2>
                 <div>
