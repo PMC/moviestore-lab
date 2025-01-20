@@ -24,7 +24,7 @@ const movies = (await getCollection("apiMovies")).sort(function (a, b) {
             <a href={`./movie/info/${m.id}`}>
               <img src={`https://image.tmdb.org/t/p/w300${m.data.poster_path}`} />
               <h1>
-                {m.data.title} - ({m.data.release_date.slice(0, 4)})
+                {m.data.title} ({m.data.release_date.slice(0, 4)})
               </h1>
 
               <h2>
