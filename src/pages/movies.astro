@@ -13,9 +13,13 @@ if (genre !== "all") {
 }
 
 if (searchQuery.length >= 2) {
-  movies = movies.filter((m) =>
-    m.data.title.toLowerCase().includes(searchQuery),
-  );
+  movies = movies.filter((m) => {
+    const titleMatches = m.data.title.toLowerCase().includes(searchQuery);
+    const year = m.data.release_date.slice(0, 4);
+    const yearMatches = year.includes(searchQuery);
+
+    return titleMatches || yearMatches;
+  });
 }
 
 movies.sort((a, b) => a.data.title.localeCompare(b.data.title));
