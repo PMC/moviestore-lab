@@ -2,8 +2,15 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
-const movies = await getCollection("apiMovies");
-const categories = await getCollection("MovieCategories");
+const movies = (await getCollection("apiMovies")).sort(function (a, b) {
+  if (b.data.title > a.data.title) {
+    return -1;
+  }
+  if (a.data.title > b.data.title) {
+    return 1;
+  }
+  return 0;
+});
 ---
 
 <BaseLayout title="MovieStore-lab">
