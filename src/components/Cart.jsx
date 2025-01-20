@@ -83,15 +83,15 @@ const Cart = () => {
             <form method="POST" action="#">
                 <h2>Customer Information</h2>
                 <div>
-                    <label for="name-checkout">Name:</label><br />
+                    <label htmlFor="name-checkout">Name:</label><br />
                     <input id="name-checkout" name="name" required />
                 </div>
                 <div>
-                    <label for="address-checkout">Address:</label><br />
+                    <label htmlFor="address-checkout">Address:</label><br />
                     <input id="address-checkout" name="address" required />
                 </div>
                 <div>
-                    <label for="email-checkout">Email:</label><br />
+                    <label htmlFor="email-checkout">Email:</label><br />
                     <input id="email-checkout" name="email" type="email" required />
                 </div>
                 <button type="submit">Buy Now</button>
