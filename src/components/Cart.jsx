@@ -11,6 +11,15 @@ const Cart = () => {
         { id: 762509, quantity: 2 },
     ]);
 
+    const prices = [5, 5.25, 5.5, 5.75, 5.99, 6, 6.25, 6.5, 6.75, 6.99];
+
+    // Find movie title by ID
+    const createMoviePrice = (id) => {
+        const movie = moviesArray.find((movie) => movie.id === id);
+        const voteINT = Number(movie.vote_average).toPrecision(1);
+        return voteINT ? prices[voteINT] : 'Unknown Price';
+    };
+
     // Find movie title by ID
     const getMovieTitle = (id) => {
         const movie = moviesArray.find((movie) => movie.id === id);
@@ -57,6 +66,7 @@ const Cart = () => {
                     <tr>
                         <th>Movie Title</th>
                         <th>Quantity</th>
+                        <th>Price</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -65,6 +75,7 @@ const Cart = () => {
                         <tr key={item.id}>
                             <td>{getMovieTitle(item.id)}</td>
                             <td>{item.quantity}</td>
+                            <td>{createMoviePrice(item.id)}</td>
                             <td>
                                 <button type="button" onClick={() => updateQuantity(item.id, 1)}>
                                     +
