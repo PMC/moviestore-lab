@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import moviesData from '../content/movies.json'; // Import movies data
-import '../styles/moviesList.css'
+import React, { useState } from "react";
+import moviesData from "../content/movies.json"; // Import movies data
+import "../styles/moviesList.css";
 
 const itemsPerPage = 4;
 
@@ -9,10 +9,12 @@ function MovieCarousel() {
   const movies = moviesData.results;
 
   const currentMovies = movies.slice(startIndex, startIndex + itemsPerPage);
-  
+
   function goToNextPage() {
     console.log("Button clicked!");
-    console.log("goToNextPage startIndex: " + startIndex + " itemsPerPage: " + itemsPerPage + " length: " + movies.length);
+    console.log(
+      "goToNextPage startIndex: " + startIndex + " itemsPerPage: " + itemsPerPage + " length: " + movies.length
+    );
     if (startIndex + itemsPerPage < movies.length) {
       setStartIndex(startIndex + itemsPerPage);
     }
@@ -32,12 +34,14 @@ function MovieCarousel() {
         {currentMovies.length > 0 ? (
           currentMovies.map((movie) => (
             <div className="movie-item" key={movie.id}>
-              <img
-                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                alt={movie.title}
-                className="movie-poster"
-              />
-              <h3>{movie.title}</h3>
+              <a href={`./movie/info/${movie.id}`}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                  alt={movie.title}
+                  className="movie-poster"
+                />
+                <h3>{movie.title}</h3>
+              </a>
             </div>
           ))
         ) : (
@@ -46,7 +50,6 @@ function MovieCarousel() {
       </div>
 
       <button onClick={goToNextPage}>→</button>
-
     </div>
   );
 }
