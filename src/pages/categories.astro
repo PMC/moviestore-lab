@@ -9,9 +9,27 @@ const movies = await getCollection("apiMovies");
   <main class="container">
     <h1>hello from Categories</h1>
     <section>
-      <ul>
-        {movies.map((m) => <li>{m.data.title}</li>)}
-      </ul>
+      {
+        movies.map((m) => (
+          <article>
+            <h1>
+              {m.data.title} - ({m.data.release_date.slice(0, 4)})
+            </h1>
+            <h5>
+              Rating: ({m.data.vote_average}/10) - Votes: {m.data.vote_count}{" "}
+            </h5>
+            <div class="grid">
+              <img src="https://m.media-amazon.com/images/I/812LsdgHbnL._AC_UL320_.jpg" />
+              <p>
+                <strong>Overview:</strong> {m.data.overview}
+              </p>
+            </div>
+            <footer>
+              <button>add to cart</button>
+            </footer>
+          </article>
+        ))
+      }
     </section>
     <blockquote>
       Contact is a funny word. Some people think design means how it looks. But of course, if you dig deeper, it's
