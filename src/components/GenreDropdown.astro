@@ -3,55 +3,55 @@
  * GenreDropdown.astro
  */
 ---
+
 <details class="dropdown">
-    <summary>Select Genre</summary>
-    <ul>
-      <li>
-        <label>
-          <input id="filter-28" type="radio" name="genre" value="28" />
-          Action
-        </label>
-      </li>
-      <li>
-        <label>
-          <input id="filter-12" type="radio" name="genre" value="12" />
-          Adventure
-        </label>
-      </li>
-      <li>
-        <label>
-          <input id="filter-16" type="radio" name="genre" value="16" />
-          Animation
-        </label>
-      </li>
-      <li>
-        <label>
-          <input id="filter-35" type="radio" name="genre" value="35" />
-          Comedy
-        </label>
-      </li>
-      <li>
-        <label>
-          <input id="show-all" type="radio" name="genre" value="all" />
-          All
-        </label>
-      </li>
-    </ul>
-  </details>
-  
-  <script is:inline>
-    document.addEventListener("DOMContentLoaded", () => {
-      // Grab all radio inputs
-      const radios = document.querySelectorAll("input[name='genre']");
-  
-      radios.forEach((radio) => {
-        // On change, redirect to /categories?genre=<value>
-        radio.addEventListener("change", () => {
-          const genreValue = radio.value;
-          // Redirect the browser to /categories?genre=...
-          window.location.href = `/categories?genre=${genreValue}`;
-        });
+  <summary>Movies</summary>
+  <ul>
+    <li>
+      <label>
+        <input id="filter-28" type="radio" name="genre" value="28" />
+        Action
+      </label>
+    </li>
+    <li>
+      <label>
+        <input id="filter-12" type="radio" name="genre" value="12" />
+        Adventure
+      </label>
+    </li>
+    <li>
+      <label>
+        <input id="filter-16" type="radio" name="genre" value="16" />
+        Animation
+      </label>
+    </li>
+    <li>
+      <label>
+        <input id="filter-35" type="radio" name="genre" value="35" />
+        Comedy
+      </label>
+    </li>
+    <li>
+      <label>
+        <input id="show-all" type="radio" name="genre" value="all" />
+        All
+      </label>
+    </li>
+  </ul>
+</details>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Grab all radio inputs
+    const radios = document.querySelectorAll("input[name='genre']");
+
+    radios.forEach((radio) => {
+      // On change, redirect to /categories?genre=<value>
+      radio.addEventListener("change", () => {
+        const genreValue = radio.value;
+        // Redirect the browser to /categories?genre=...
+        window.location.href = `/movies?genre=${genreValue}`;
       });
     });
-  </script>
-  
+  });
+</script>
