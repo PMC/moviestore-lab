@@ -10,46 +10,25 @@ const categories = await getCollection("MovieCategories");
   <main class="container-fluid">
     <!-- Checkboxes -->
 
-    <section>
+    <section class="grid">
       {
         movies.map((m) => (
-          <article
-            class="border-2 p-4"
-            data-genreids={m.data.genre_ids.join(",")}
-          >
-            <a href="./info">
+          <article class="border-2 p-4" data-genreids={m.data.genre_ids.join(",")}>
+            <a href={`./movie/info/${m.id}`}>
               <h1>
                 {m.data.title} - ({m.data.release_date.slice(0, 4)})
               </h1>
-              <h5>
-                Rating: ({m.data.vote_average}/10) - Votes: {m.data.vote_count}{" "}
-              </h5>
-              <div class="grid">
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${m.data.poster_path}`}
-                />
 
-                <ul>
-                  <li>
-                    <strong>Overview:</strong> {m.data.overview}
-                  </li>
-                  <li>Release date: {m.data.release_date}</li>
-                  <li>Language: {m.data.original_language.toUpperCase()}</li>
-                  <li>Popularity: {m.data.popularity}</li>
-                  <li>
-                    Categories:
-                    {m.data.genre_ids.map((c) => (
-                      <b>{c},</b>
-                    ))}
-                  </li>
-                </ul>
-              </div>
+              <h2>
+                - Rating: ({m.data.vote_average}/10) - Votes: {m.data.vote_count}{" "}
+              </h2>
+              <img src={`https://image.tmdb.org/t/p/w300${m.data.poster_path}`} />
             </a>
-            <footer>
+            <div class="buttonArea">
               <button class="add-to-cart" data-movieid={m.data.id}>
                 Add to cart
               </button>
-            </footer>
+            </div>
           </article>
         ))
       }
@@ -103,6 +82,9 @@ const categories = await getCollection("MovieCategories");
   </script>
 </BaseLayout>
 <style>
+  section {
+    grid-template-columns: repeat(auto-fill, 30ch);
+  }
   article {
     border-color: rgba(0, 0, 0, 0.432);
   }
@@ -117,7 +99,18 @@ const categories = await getCollection("MovieCategories");
     color: var(--pico-h3-color);
   }
 
+  h1 {
+    font-size: 1rem;
+    height: 2rem;
+  }
+  h2 {
+    font-size: 0.75rem;
+  }
+
   main {
     padding-top: 2rem;
+  }
+  .buttonArea {
+    padding-top: 1rem;
   }
 </style>
