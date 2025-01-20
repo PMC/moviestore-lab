@@ -1,0 +1,10 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Cart from "../components/Cart.jsx"; // React component to handle cart logic
+---
+
+<BaseLayout title="MovieStore-lab">
+  <main class="container">
+    <Cart client:load />
+  </main>
+</BaseLayout>
