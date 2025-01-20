@@ -7,7 +7,12 @@ const { id } = Astro.params;
 ---
 
 <BaseLayout title="MovieStore-lab">
-  <main>
+  <main class="container-fluid">
     <MovieInfo movieid=`${id}` />
   </main>
 </BaseLayout>
+<style>
+  main {
+    padding-top: 2rem;
+  }
+</style>
