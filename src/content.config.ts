@@ -10,7 +10,7 @@ const movieInfo = defineCollection({
 });
 
 const MovieCategories = defineCollection({
-    loader: file("src/content/categories.json", { parser: (text) => JSON.parse(text).results })
+    loader: file("src/content/categories.json", { parser: (text) => JSON.parse(text).genres })
 });
 
 

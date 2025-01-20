@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
 const movies = await getCollection("apiMovies");
+const categories = await getCollection("MovieCategories");
 ---
 
 <BaseLayout title="MovieStore-lab">
