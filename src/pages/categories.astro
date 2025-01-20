@@ -20,7 +20,8 @@ const movies = await getCollection("apiMovies");
                 Rating: ({m.data.vote_average}/10) - Votes: {m.data.vote_count}{" "}
               </h5>
               <div class="grid">
-                <img src="https://m.media-amazon.com/images/I/812LsdgHbnL._AC_UL320_.jpg" />
+                <img src={`https://image.tmdb.org/t/p/w200${m.data.poster_path}`} />
+
                 <ul>
                   <li>
                     <strong>Overview:</strong> {m.data.overview}
@@ -56,17 +57,15 @@ const movies = await getCollection("apiMovies");
   </main>
   <script is:inline>
     // Wait for the DOM to load
-    document.addEventListener('DOMContentLoaded', () => {
-
-      const buttons = document.querySelectorAll('.add-to-cart');
+    document.addEventListener("DOMContentLoaded", () => {
+      const buttons = document.querySelectorAll(".add-to-cart");
 
       buttons.forEach((btn) => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener("click", () => {
+          const movieId = parseInt(btn.getAttribute("data-movieid"));
 
-          const movieId = parseInt(btn.getAttribute('data-movieid'));
-          
           // Parse the cart from localStorage (or start a new one)
-          const cart = JSON.parse(localStorage.getItem('cart')) || [];
+          const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
           // Check if item is already in cart
           const existingItem = cart.find((item) => item.id === movieId);
@@ -77,8 +76,8 @@ const movies = await getCollection("apiMovies");
           }
 
           // Save back to localStorage
-          localStorage.setItem('cart', JSON.stringify(cart));
-          alert('Movie added to cart!');
+          localStorage.setItem("cart", JSON.stringify(cart));
+          alert("Movie added to cart!");
         });
       });
     });
