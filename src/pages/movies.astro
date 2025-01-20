@@ -15,6 +15,7 @@ const categories = await getCollection("MovieCategories");
         movies.map((m) => (
           <article class="border-2 p-4" data-genreids={m.data.genre_ids.join(",")}>
             <a href={`./movie/info/${m.id}`}>
+              <img src={`https://image.tmdb.org/t/p/w300${m.data.poster_path}`} />
               <h1>
                 {m.data.title} - ({m.data.release_date.slice(0, 4)})
               </h1>
@@ -22,7 +23,6 @@ const categories = await getCollection("MovieCategories");
               <h2>
                 - Rating: ({m.data.vote_average}/10) - Votes: {m.data.vote_count}{" "}
               </h2>
-              <img src={`https://image.tmdb.org/t/p/w300${m.data.poster_path}`} />
             </a>
             <div class="buttonArea">
               <button class="add-to-cart" data-movieid={m.data.id}>
