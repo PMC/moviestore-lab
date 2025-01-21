@@ -63,9 +63,10 @@ companies = companies.slice(0, companies.length - 2);
           Categories:
           {movie.genres.map((c) => <a href={`./../../movies?genre=${c.id}`}>#{c.name} </a>)}
         </li>
-        <li><a href={movie.homepage}>Homepage: {movie.homepage}</a></li>
+        <li><a href={movie.homepage} target="_blank">Homepage: {movie.homepage}</a></li>
         <li>
           <a href={`https://www.imdb.com/title/${movie.imdb_id}`}
+            target="_blank"
             >Imdb: {`https://www.imdb.com/title/${movie.imdb_id}`}</a
           >
         </li>
