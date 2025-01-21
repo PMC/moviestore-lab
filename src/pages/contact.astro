@@ -4,12 +4,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout title="MovieStore-lab">
   <main class="container">
-    <h1>Contact Us / Customer Support</h1>
-    <p>We're here to make your movie shopping experience smooth, enjoyable, and memorable.</p>
+    <h1>Customer Support</h1>
+    <p class="intro">We're here to make your movie shopping experience smooth, enjoyable, and memorable.</p>
 
-    <section>
+    <section class="contact-section">
+      <hr>
       <h2>How to Reach Us</h2>
-      <ul>
+      <ul class="contact-options">
         <li>
           <strong>Email Support:</strong>
           <a href="mailto:support@moviestorelab.com">support@moviestorelab.com</a>
@@ -20,21 +21,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <p>Available Monday - Friday, 9:00 AM - 6:00 PM (EST).</p>
         </li>
         <li>
-          <strong>Use contact form:</strong>
+          <strong>Use Contact Form</strong>
         </li>
       </ul>
+    </section>
+
+    <section class="contact-form-section">
+      <hr>
       <h2>Contact Form</h2>
       <p>Prefer to reach out online? Fill out the form below, and we'll get back to you as soon as possible.</p>
-      <form action="#" method="POST">
+      <form action="#" method="POST" class="contact-form">
         <label for="fullname-contact-form">Full Name</label>
-        <input type="text" id="fullname-contact-form" name="fullname" required />
+        <input type="text" id="fullname-contact-form" name="fullname" placeholder="Your Full Name" required />
 
         <label for="email-contact-form">Email</label>
-        <input type="email" id="email-contact-form" name="email" required />
+        <input type="email" id="email-contact-form" name="email" placeholder="Your Email Address" required />
 
         <label for="Topic">Topic</label>
         <select name="Topic" aria-label="Select Topic" required>
-          <option selected disabled value=""> Select Topic, read below about common Topics ... </option>
+          <option selected disabled value="">Select Topic</option>
           <option>Account Assistance</option>
           <option>Billing & Payments</option>
           <option>Order Status</option>
@@ -43,60 +48,46 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </select>
 
         <label for="message-contact-form">Message</label>
-        <textarea id="message-contact-form" name="message" rows="5" required></textarea>
+        <textarea id="message-contact-form" name="message" rows="5" placeholder="Write your message here..." required></textarea>
 
-        <button type="submit">Send Message</button>
+        <button type="submit" class="submit-button">Send Message</button>
       </form>
     </section>
 
-    <section>
+    <section class="common-topics">
+      <hr>
       <h2>Common Topics</h2>
       <ul>
         <li>
           <strong>Order Status:</strong>
-          <p>
-            Check your order status in your account under “My Orders.” For delays or shipping questions, please contact
-            us.
-          </p>
+          <p>Check your order status in your account under “My Orders.” For delays or shipping questions, please contact us.</p>
         </li>
         <li>
-          <strong>Refunds &amp; Exchanges:</strong>
-          <p>
-            If you're unsatisfied or received a damaged disc, let us know. We'll guide you through returns and exchanges
-            or provide a refund according to our policy.
-          </p>
+          <strong>Refunds & Exchanges:</strong>
+          <p>If you're unsatisfied or received a damaged disc, let us know. We'll guide you through returns and exchanges or provide a refund according to our policy.</p>
         </li>
         <li>
-          <strong>Billing &amp; Payments:</strong>
-          <p>
-            Questions about charges or payment methods? We can clarify billing details and payment options, or correct
-            any errors.
-          </p>
+          <strong>Billing & Payments:</strong>
+          <p>Questions about charges or payment methods? We can clarify billing details and payment options, or correct any errors.</p>
         </li>
         <li>
           <strong>Account Assistance:</strong>
-          <p>
-            Forgot your password or notice unusual activity? We can help reset your password and secure your account.
-          </p>
+          <p>Forgot your password or notice unusual activity? We can help reset your password and secure your account.</p>
         </li>
       </ul>
     </section>
 
-    <section>
+    <section class="additional-resources">
+      <hr>
       <h2>Additional Resources</h2>
       <ul>
-        <li>
-          <strong>FAQs:</strong>
-          <a href="#">Frequently Asked Questions</a> - Quick answers to shipping, orders, and digital downloads.
-        </li>
-        <li>
-          <strong>Help Articles:</strong>
-          <a href="#">Browse Help Center</a> - Step-by-step guides on account settings, watchlists, and premium features.
-        </li>
+        <li><strong>FAQs:</strong> <a href="#">Frequently Asked Questions</a> - Quick answers to shipping, orders, and digital downloads.</li>
+        <li><strong>Help Articles:</strong> <a href="#">Browse Help Center</a> - Step-by-step guides on account settings, watchlists, and premium features.</li>
       </ul>
     </section>
 
-    <section>
+    <section class="our-promise">
+      <hr>
       <h2>Our Promise</h2>
       <p>
         We want you to enjoy hassle-free browsing and purchasing of your favorite films. If there's anything we can do
@@ -107,11 +98,38 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </section>
   </main>
 </BaseLayout>
+
 <style>
-  a:hover {
-    color: var(--pico-primary-focus);
+  .container {
+    max-width: 800px;
   }
+
+  h1, h2 {
+    margin-top: 100px;
+    margin-bottom: 25px;
+  }
+
+  .intro {
+    margin-bottom: 100px;
+    font-size: 1.3rem;
+  }
+
+  .contact-section, 
+  .contact-form-section, 
+  .common-topics, 
+  .additional-resources, 
+  .our-promise {
+    margin-bottom: 100px;
+  }
+
   ul {
-    margin-left: 1.5rem;
+    padding-left: 20px;
+  }
+
+  form.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
   }
 </style>
