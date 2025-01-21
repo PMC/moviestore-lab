@@ -33,28 +33,28 @@ import "../styles/front.css";
 
 <script>
   const pairs = [
-    { id: 'poster1' },
-    { id: 'poster2' },
-    { id: 'poster3' },
-    { id: 'poster4' },
-    { id: 'poster5' },
+    { id: "poster1" },
+    { id: "poster2" },
+    { id: "poster3" },
+    { id: "poster4" },
+    { id: "poster5" },
   ];
 
   setTimeout(() => {
     pairs.forEach((pair, index) => {
       const container = document.getElementById(pair.id);
-      const layers = container.querySelectorAll('.image-layer');
+      const layers = container.querySelectorAll(".image-layer");
       let activeIndex = 0;
 
       setTimeout(() => {
-        layers[activeIndex].classList.remove('active');
+        layers[activeIndex].classList.remove("active");
         activeIndex = (activeIndex + 1) % layers.length;
-        layers[activeIndex].classList.add('active');
+        layers[activeIndex].classList.add("active");
 
         setInterval(() => {
-          layers[activeIndex].classList.remove('active');
+          layers[activeIndex].classList.remove("active");
           activeIndex = (activeIndex + 1) % layers.length;
-          layers[activeIndex].classList.add('active');
+          layers[activeIndex].classList.add("active");
         }, 15000);
       }, index * 3000);
     });
