@@ -51,6 +51,12 @@ import GenreDropdown from "../components/GenreDropdown.astro";
 
         localStorage.setItem("cart", JSON.stringify(cart));
         updateCartCount();
+
+        const originalText = btn.textContent;
+        btn.textContent = "Movie added!";
+        setTimeout(() => {
+          btn.textContent = originalText;
+        }, 2000);
       });
     });
   });
@@ -79,4 +85,5 @@ import GenreDropdown from "../components/GenreDropdown.astro";
     left: 150px;
     width: auto;
   }
+
 </style>
