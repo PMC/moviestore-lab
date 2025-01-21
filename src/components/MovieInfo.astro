@@ -153,7 +153,17 @@ directors = directors.slice(0, directors.length - 2);
 <style>
   .credits {
     border-color: rgba(0, 0, 0, 0.432);
-    grid-template-columns: repeat(auto-fill, 20ch);
+    justify-content: center;
+    grid-template-columns: repeat(6, 200px );
+    @media (width <= 1400px) {
+      grid-template-columns: repeat(4, 200px );
+    }
+    @media (width <= 900px) {
+      grid-template-columns: repeat(2, 200px );
+    }
+    @media (width <= 500px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   div {
