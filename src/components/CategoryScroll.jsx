@@ -8,15 +8,17 @@ function CategoryScroll({ category, movies }) {
 
   return (
     <section className="category-scroll-section">
-      <h2>{category.name}</h2>
+      <h2 className="categoryTitle">
+        <a href={`/movies?genre=${category.id}`}>{category.name}</a>
+      </h2>
       <div className="category-scroll">
         {categoryMovies.map((movie) => (
           <article className="card movie-poster" key={movie.id}>
             <a href={`./movie/info/${movie.id}`}>
-            <img
-              src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-              alt={movie.title}
-            />
+              <img
+                src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                alt={movie.title}
+              />
             </a>
             <h4 className="movieTitle">{movie.title}</h4>
             <button className="add-to-cart" data-movieid={movie.id}> Add to cart </button>
