@@ -61,7 +61,7 @@ companies = companies.slice(0, companies.length - 2);
         <li>Popularity: {movie.popularity}</li>
         <li>
           Categories:
-          {movie.genres.map((c) => <ins>#{c.name} </ins>)}
+          {movie.genres.map((c) => <a href={`./../../movies?genre=${c.id}`}>#{c.name} </a>)}
         </li>
         <li><a href={movie.homepage}>Homepage: {movie.homepage}</a></li>
         <li>
