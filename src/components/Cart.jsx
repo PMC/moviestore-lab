@@ -2,23 +2,28 @@ import React, { useEffect, useState } from "react";
 import moviesData from "../content/movies.json";
 
 const Cart = () => {
-  // Extract the movies array from the JSON data
   const moviesArray = moviesData.results;
-
-  // Initial cart data
   const [cart, setCart] = useState([]);
 
-  // On mount, pull cart data from localStorage (if any)
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
     if (storedCart) {
       setCart(JSON.parse(storedCart));
     }
   }, []);
-  // Whenever cart changes, store it in localStorage
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
   }, [cart]);
+
+  const updateCartCount = () => {
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const cartCountElement = document.getElementById("cart-count");
+    if (cartCountElement) {
+      cartCountElement.textContent = totalItems;
+    }
+  };
 
   const prices = [5, 5.25, 5.5, 5.75, 5.99, 6, 6.25, 6.5, 6.75, 6.99];
 
@@ -33,12 +38,10 @@ const Cart = () => {
     return prices[voteINT] || 0;
   };
 
-  // Return a formatted string like "5.25$"
   const createMoviePrice = (id) => {
     return `${getNumericPrice(id).toFixed(2)}$`;
   };
 
-  // Find movie title by ID
   const getMovieTitle = (id) => {
     const movie = moviesArray.find((movie) => movie.id === id);
     return movie ? movie.title : "Unknown Title";
@@ -50,29 +53,16 @@ const Cart = () => {
     return imgUrl;
   };
 
-  // Handle quantity updates
   const updateQuantity = (id, delta) => {
     setCart((prevCart) =>
       prevCart.map((item) => (item.id === id ? { ...item, quantity: Math.max(1, item.quantity + delta) } : item))
     );
   };
 
-  // Handle item removal
   const removeItem = (id) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
-  // Add a movie
-  const addMovie = (id) => {
-    const movieExists = cart.some((item) => item.id === id);
-    if (movieExists) {
-      setCart((prevCart) => prevCart.map((item) => (item.id === id ? { ...item, quantity: item.quantity + 1 } : item)));
-    } else {
-      setCart((prevCart) => [...prevCart, { id, quantity: 1 }]);
-    }
-  };
-
-  // Calculate grand total
   const grandTotal = cart.reduce((sum, item) => {
     const price = getNumericPrice(item.id);
     return sum + price * item.quantity;

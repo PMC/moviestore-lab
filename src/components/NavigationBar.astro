@@ -8,24 +8,53 @@ import GenreDropdown from "../components/GenreDropdown.astro";
   </ul>
   <ul>
     <li>
-      <!-- A simple GET form that sends ?search=... to /movies -->
       <form action="/movies" method="get" style="display: inline;">
-        <input 
-          type="search" 
-          name="search" 
-          placeholder="Search" 
-          aria-label="Search" 
-          id="search-navbar" 
+        <input
+          type="search"
+          name="search"
+          placeholder="Search"
+          aria-label="Search"
+          id="search-navbar"
           minlength="2"
         />
       </form>
     </li>
     <GenreDropdown />
     <li><a href="/contact">Contact</a></li>
-    <li><a href="/checkout">Checkout</a></li>
+    <li>
+      <a id="cart-link" href="/checkout">
+        🛒 <span id="cart-count">0</span> items
+      </a>
+    </li>
   </ul>
 </nav>
+<script is:inline>
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    document.getElementById("cart-count").textContent = totalItems;
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    updateCartCount();
+    const buttons = document.querySelectorAll(".add-to-cart");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const movieId = parseInt(btn.getAttribute("data-movieid"));
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const existingItem = cart.find((item) => item.id === movieId);
 
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({ id: movieId, quantity: 1 });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+      });
+    });
+  });
+</script>
 <style>
   #topnav {
     padding-left: var(--pico-spacing);

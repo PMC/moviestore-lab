@@ -59,27 +59,7 @@ movies.sort((a, b) => a.data.title.localeCompare(b.data.title));
       )}
     </section>
   </main>
-  <script is:inline>
-    document.addEventListener("DOMContentLoaded", () => {
-      const buttons = document.querySelectorAll(".add-to-cart");
-      buttons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const movieId = parseInt(btn.getAttribute("data-movieid"));
-          const cart = JSON.parse(localStorage.getItem("cart")) || [];
-          const existingItem = cart.find((item) => item.id === movieId);
 
-          if (existingItem) {
-            existingItem.quantity += 1;
-          } else {
-            cart.push({ id: movieId, quantity: 1 });
-          }
-
-          localStorage.setItem("cart", JSON.stringify(cart));
-          alert("Movie added to cart!");
-        });
-      });
-    });
-  </script>
 </BaseLayout>
 <style>
   section {
