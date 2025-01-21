@@ -58,24 +58,15 @@ const fetchCredits = async () => {
 };
 const credits = await fetchCredits();
 
-//fetching top actors and all directors
-let actors = "";
-let actorsCount = 0;
+//fetching all directors
 let directors = "";
 
 credits.cast.map((a) => {
   if (a.known_for_department === "Directing") {
     directors += a.name + ", ";
   }
-  if (actorsCount === 10) {
-    return;
-  }
-  if (a.known_for_department === "Acting") {
-    actors += a.name + ", ";
-  }
-  actorsCount++;
 });
-actors = actors.slice(0, actors.length - 2);
+
 
 //add crew directors
 
@@ -86,7 +77,7 @@ credits.crew.map((d) => {
 });
 directors = directors.slice(0, directors.length - 2);
 
-let filteredCredits = credits.cast.filter((num) => num.profile_path !== null)
+const filteredCredits = credits.cast.filter((num) => num.profile_path !== null)
  .map((value) => {
   if (value.profile_path)
   {
@@ -136,9 +127,7 @@ let filteredCredits = credits.cast.filter((num) => num.profile_path !== null)
         <li>
           Production Companies: {companies}
         </li>
-        <li>
-          Actors: {actors}
-        </li>
+
         <li>
           Directors: {directors}
         </li>
