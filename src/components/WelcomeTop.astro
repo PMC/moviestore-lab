@@ -1,0 +1,67 @@
+---
+import "../styles/front.css";
+---
+
+<section id="topBanner" class="banner-container">
+  <div class="banner-images">
+    <div class="image-container" id="poster1">
+      <img src="src/content/Images/poster1.jpg" alt="Movie poster" class="image-layer active" />
+      <img src="src/content/Images/poster6.jpg" alt="Movie poster" class="image-layer" />
+    </div>
+    <div class="image-container" id="poster2">
+      <img src="src/content/Images/poster2.jpg" alt="Movie poster" class="image-layer active" />
+      <img src="src/content/Images/poster7.jpg" alt="Movie poster" class="image-layer" />
+    </div>
+    <div class="image-container" id="poster3">
+      <img src="src/content/Images/poster3.jpg" alt="Movie poster" class="image-layer active" />
+      <img src="src/content/Images/poster8.jpg" alt="Movie poster" class="image-layer" />
+    </div>
+    <div class="image-container" id="poster4">
+      <img src="src/content/Images/poster4.jpg" alt="Movie poster" class="image-layer active" />
+      <img src="src/content/Images/poster9.jpg" alt="Movie poster" class="image-layer" />
+    </div>
+    <div class="image-container" id="poster5">
+      <img src="src/content/Images/poster5.jpg" alt="Movie poster" class="image-layer active" />
+      <img src="src/content/Images/poster10.jpg" alt="Movie poster" class="image-layer" />
+    </div>
+  </div>
+  <div class="banner-text">
+    <h1>Watch Movies with the Brown Squad!</h1>
+    <h2>Below are some of our movies</h2>
+  </div>
+</section>
+
+<script>
+  const pairs = [
+    { id: 'poster1' },
+    { id: 'poster2' },
+    { id: 'poster3' },
+    { id: 'poster4' },
+    { id: 'poster5' },
+  ];
+
+  setTimeout(() => {
+    pairs.forEach((pair, index) => {
+      const container = document.getElementById(pair.id);
+      const layers = container.querySelectorAll('.image-layer');
+      let activeIndex = 0;
+
+      setTimeout(() => {
+        layers[activeIndex].classList.remove('active');
+        activeIndex = (activeIndex + 1) % layers.length;
+        layers[activeIndex].classList.add('active');
+
+        setInterval(() => {
+          layers[activeIndex].classList.remove('active');
+          activeIndex = (activeIndex + 1) % layers.length;
+          layers[activeIndex].classList.add('active');
+        }, 15000);
+      }, index * 3000);
+    });
+  }, 3000); // Initial delay
+</script>
+
+
+<style>
+
+</style>

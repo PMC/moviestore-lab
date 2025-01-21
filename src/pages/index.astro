@@ -1,18 +1,23 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import MovieCarousel from "../components/MoviesList.jsx";
+import WelcomeTop from "../components/WelcomeTop.astro";
+import CategoryScroll from '../components/CategoryScroll.jsx';
+import "../styles/front.css";
+
+// Import categories and movies
+import categoriesData from "../content/categories.json";
+import moviesData from "../content/movies.json";
+
+const categories = categoriesData.genres.slice(0, 5);
+const movies = moviesData.results;
 ---
 
 <BaseLayout title="MovieStore-lab">
-  <main>
-    <MovieCarousel client:load />
+  <main class="container-fluid">
+    <WelcomeTop />
+
+    {categories.map((cat) => (
+      <CategoryScroll category={cat} movies={movies} client:load />
+    ))}
   </main>
 </BaseLayout>
-<style>
-  a:hover {
-    color: var(--pico-primary-focus);
-  }
-  ul {
-    margin-left: 1.5rem;
-  }
-</style>
