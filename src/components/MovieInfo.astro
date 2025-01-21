@@ -140,13 +140,22 @@ directors = directors.slice(0, directors.length - 2);
   <article class="border-2 p-4">
     <h1>Credits</h1>
     <hr>
-    {credits.cast.map((cc) => <img src={`https://image.tmdb.org/t/p/w200/${cc.profile_path}`} /> <p>{cc.name} as {cc.character} ({cc.known_for_department})</p> )}
+    <section class="grid credits">
+    
+    {credits.cast.map((cc) => <img src={`https://image.tmdb.org/t/p/w200/${cc.profile_path}`} /> <footer>{cc.name} as {cc.character} ({cc.known_for_department})</footer> )}
+
+  </section>
   </article>
   
 </section>
 
 
 <style>
+  .credits {
+    border-color: rgba(0, 0, 0, 0.432);
+    grid-template-columns: repeat(auto-fill, 20ch);
+  }
+
   div {
     grid-template-columns: minmax(300px, 320px) minmax(300px, 1fr);
     @media (width <= 680px) {
