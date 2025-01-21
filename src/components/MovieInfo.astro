@@ -135,11 +135,16 @@ directors = directors.slice(0, directors.length - 2);
     <footer>
       <button class="add-to-cart" data-movieid={movie.id}> Add to cart </button>
     </footer>
-    <article>
-      {credits.cast.map((cc) => <img src={`https://image.tmdb.org/t/p/w200/${cc.profile_path}`} /> <p>{cc.name} as {cc.character} ({cc.known_for_department})</p> )}
-    </article>
+
   </article>
+  <article class="border-2 p-4">
+    <h1>Credits</h1>
+    <hr>
+    {credits.cast.map((cc) => <img src={`https://image.tmdb.org/t/p/w200/${cc.profile_path}`} /> <p>{cc.name} as {cc.character} ({cc.known_for_department})</p> )}
+  </article>
+  
 </section>
+
 
 <style>
   div {
