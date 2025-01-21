@@ -2,7 +2,6 @@
 
 import node from "@astrojs/node";
 import react from "@astrojs/react";
-import tailwind from "@astrojs/tailwind";
 import { defineConfig, envField } from "astro/config";
 
 // https://astro.build/config
@@ -17,5 +16,5 @@ export default defineConfig({
     // mode: 'standalone' or 'serverless'
     mode: "standalone",
   }),
-  integrations: [react(), tailwind()],
+  integrations: [react()],
 });
