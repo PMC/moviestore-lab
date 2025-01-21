@@ -19,7 +19,7 @@ function CategoryScroll({ category, movies }) {
             />
             </a>
             <h4 className="movieTitle">{movie.title}</h4>
-            <button class="add-to-cart" data-movieid={movie.id}> Add to cart </button>
+            <button className="add-to-cart" data-movieid={movie.id}> Add to cart </button>
             <div className="rating">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
