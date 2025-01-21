@@ -79,19 +79,13 @@ directors = directors.slice(0, directors.length - 2);
 
 const filteredCredits = credits.cast.filter((num) => num.profile_path !== null)
  .map((value) => {
-  if (value.profile_path)
-  {
     return value;
-  }
-
-  return "";
 });
 
 ---
 
 <section>
   <article class="border-2 p-4">
-    {console.log(filteredCredits)}
     <h1>
       {movie.title}
     </h1>
