@@ -26,7 +26,12 @@ const fetchData = async () => {
 
 const movie = await fetchData();
 
-//const movie = (await getCollection("apiMovies")).find((m) => m.id === Astro.props.movieid);
+//remove ", " at end
+let companies = "";
+movie.production_companies.map((c) => {
+  companies += c.name + ", ";
+});
+companies = companies.slice(0, companies.length - 2);
 ---
 
 <section>
@@ -65,8 +70,7 @@ const movie = await fetchData();
           >
         </li>
         <li>
-          Production Company:
-          {movie.production_companies.map((c) => <ins>#{c.name} </ins>)}
+          Production Companies: {companies}
         </li>
       </ul>
     </div>
