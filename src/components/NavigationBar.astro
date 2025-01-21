@@ -54,9 +54,11 @@ import GenreDropdown from "../components/GenreDropdown.astro";
 
         const originalText = btn.textContent;
         btn.textContent = "Movie added!";
+        btn.disabled = true;
         setTimeout(() => {
           btn.textContent = originalText;
-        }, 2000);
+          btn.disabled = false;
+        }, 500);
       });
     });
   });
