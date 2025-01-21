@@ -79,6 +79,7 @@
     flex: 0 0 auto;
     width: 200px;
     text-align: center;
+    position: relative;
 }
 
 .movie-poster img {
@@ -95,5 +96,42 @@
   padding: 20px;
 }
 
+.rating {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.star-icon {
+  width: 100%;
+  height: 100%;
+  fill: rgba(255, 217, 0, 0.932);
+}
 
+.star-rating {
+  position: absolute;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  pointer-events: none;
+}
+
+.movieTitle {
+  margin-top: 15px;
+  padding-bottom: 50px;
+  font-size: 1rem;
+  justify-self: center;
+}
+
+.add-to-cart {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  padding: 5px;
+}
