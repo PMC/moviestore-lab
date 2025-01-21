@@ -135,9 +135,9 @@ const filteredCredits = credits.cast.filter((num) => num.profile_path !== null)
   <article class="border-2 p-4">
     <h1>Credits</h1>
     <hr>
-    <section class="grid credits">
+    <section class="grid credits p-100">
     
-    {filteredCredits.map((cc) => <img src={`https://image.tmdb.org/t/p/w200/${cc.profile_path}`} /> <footer>{cc.name} as {cc.character} ({cc.known_for_department})</footer> )}
+    {filteredCredits.map((cc) => <img src={`https://image.tmdb.org/t/p/w200/${cc.profile_path}`} /> <footer class="creditsText">{cc.name} as {cc.character} ({cc.known_for_department})</footer> )}
 
   </section>
   </article>
@@ -148,13 +148,13 @@ const filteredCredits = credits.cast.filter((num) => num.profile_path !== null)
 <style>
   .credits {
     border-color: rgba(0, 0, 0, 0.432);
-    justify-content: center;
-    grid-template-columns: repeat(6, 200px );
-    @media (width <= 1400px) {
-      grid-template-columns: repeat(4, 200px );
+
+    grid-template-columns: repeat(8, 200px);
+    @media (width <= 1600px) {
+      grid-template-columns: repeat(6, 200px);
     }
-    @media (width <= 900px) {
-      grid-template-columns: repeat(2, 200px );
+    @media (width <= 1168px) {
+      grid-template-columns: repeat(4, 200px );
     }
     @media (width <= 500px) {
       grid-template-columns: 1fr;
@@ -180,5 +180,13 @@ const filteredCredits = credits.cast.filter((num) => num.profile_path !== null)
   article p,
   article ul {
     color: var(--pico-h3-color);
+  }
+  .creditsText 
+  {
+    margin-bottom: 350px;
+    position: relative;
+    top: 310px;
+    left: -210px;
+
   }
 </style>
