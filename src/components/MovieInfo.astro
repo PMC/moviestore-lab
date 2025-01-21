@@ -85,10 +85,22 @@ credits.crew.map((d) => {
   }
 });
 directors = directors.slice(0, directors.length - 2);
+
+let filteredCredits = credits.cast.filter((num) => num.profile_path !== null)
+ .map((value) => {
+  if (value.profile_path)
+  {
+    return value;
+  }
+
+  return "";
+});
+
 ---
 
 <section>
   <article class="border-2 p-4">
+    {console.log(filteredCredits)}
     <h1>
       {movie.title}
     </h1>
@@ -142,7 +154,7 @@ directors = directors.slice(0, directors.length - 2);
     <hr>
     <section class="grid credits">
     
-    {credits.cast.map((cc) => <img src={`https://image.tmdb.org/t/p/w200/${cc.profile_path}`} /> <footer>{cc.name} as {cc.character} ({cc.known_for_department})</footer> )}
+    {filteredCredits.map((cc) => <img src={`https://image.tmdb.org/t/p/w200/${cc.profile_path}`} /> <footer>{cc.name} as {cc.character} ({cc.known_for_department})</footer> )}
 
   </section>
   </article>
