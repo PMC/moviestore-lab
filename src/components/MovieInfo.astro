@@ -32,10 +32,62 @@ movie.production_companies.map((c) => {
   companies += c.name + ", ";
 });
 companies = companies.slice(0, companies.length - 2);
+
+/*
+fetch credits
+const url = 'https://api.themoviedb.org/3/movie/872585/credits?language=en-US';
+*/
+const fetchCredits = async () => {
+  try {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${Astro.props.movieid}/credits?language=en-US`, {
+      headers: {
+        Authorization: `Bearer ${API_SECRET_TOKEN}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return null;
+  }
+};
+const credits = await fetchCredits();
+
+//fetching top actors and all directors
+let actors = "";
+let actorsCount = 0;
+let directors = "";
+
+credits.cast.map((a) => {
+  if (a.known_for_department === "Directing") {
+    directors += a.name + ", ";
+  }
+  if (actorsCount === 10) {
+    return;
+  }
+  if (a.known_for_department === "Acting") {
+    actors += a.name + ", ";
+  }
+  actorsCount++;
+});
+actors = actors.slice(0, actors.length - 2);
+
+//add crew directors
+
+credits.crew.map((d) => {
+  if (d.known_for_department === "Directing") {
+    directors += d.name + ", ";
+  }
+});
+directors = directors.slice(0, directors.length - 2);
 ---
 
 <section>
-  {console.log(movie)}
   <article class="border-2 p-4">
     <h1>
       {movie.title}
@@ -65,13 +117,18 @@ companies = companies.slice(0, companies.length - 2);
         </li>
         <li><a href={movie.homepage} target="_blank">Homepage: {movie.homepage}</a></li>
         <li>
-          <a href={`https://www.imdb.com/title/${movie.imdb_id}`}
-            target="_blank"
+          <a href={`https://www.imdb.com/title/${movie.imdb_id}`} target="_blank"
             >Imdb: {`https://www.imdb.com/title/${movie.imdb_id}`}</a
           >
         </li>
         <li>
           Production Companies: {companies}
+        </li>
+        <li>
+          Actors: {actors}
+        </li>
+        <li>
+          Directors: {directors}
         </li>
       </ul>
     </div>
