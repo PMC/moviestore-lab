@@ -81,6 +81,11 @@ const filteredCredits = credits.cast
   .map((value) => {
     return value;
   });
+const filteredCrew = credits.crew
+  .filter((num) => num.profile_path !== null)
+  .map((value) => {
+    return value;
+  });
 ---
 
 <section>
@@ -140,10 +145,27 @@ const filteredCredits = credits.cast
             <img src={`https://image.tmdb.org/t/p/w200/${cc.profile_path}`} />
             <p>
               ({cc.known_for_department})<br />
-              <>
-                <strong>{cc.character}</strong>
-                <br />
-              </>
+              <strong>{cc.character}</strong>
+              <br />
+              {cc.name} <br />
+            </p>
+          </div>
+        ))
+      }
+    </section>
+  </article>
+  <article>
+    <h1>Crew</h1>
+    <hr />
+    <section class="flow-credit">
+      {
+        filteredCrew.map((cc) => (
+          <div class="flow-items">
+            <img src={`https://image.tmdb.org/t/p/w200/${cc.profile_path}`} />
+            <p>
+              ({cc.known_for_department})<br />
+              <strong>{cc.character}</strong>
+              <br />
               {cc.name} <br />
             </p>
           </div>
