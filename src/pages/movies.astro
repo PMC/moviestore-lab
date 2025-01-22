@@ -32,6 +32,7 @@ if (searchQuery.length >= 2) {
 
 movies.sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
+
 <script>
   import { applyFadeIn } from "../scripts/fadeIn.js";
   applyFadeIn();
@@ -43,38 +44,42 @@ movies.sort((a, b) => a.data.title.localeCompare(b.data.title));
       <p>{genreDescription}</p>
     </header>
     <section class="grid" id="movies-grid">
-      {movies.length === 0 ? (
-        <p>Sorry, No results found for "{searchQuery}"</p>
-      ) : (
-        movies.map((m) => (
-          <article
-            class="border-2 p-4"
-            data-genreids={m.data.genre_ids.join(",")}
-            data-title={m.data.title.toLowerCase()}
-          >
-            <a href={`/movie/info/${m.id}`}>
-              <img
-                src={`https://image.tmdb.org/t/p/w300${m.data.poster_path}`}
-              />
-              <h1>
-                {m.data.title} ({m.data.release_date.slice(0, 4)})
-              </h1>
-              <h2>
-                - Rating: ({m.data.vote_average}/10) - Votes:{" "}
-                {m.data.vote_count}
-              </h2>
-            </a>
-            <div class="buttonArea">
-              <button class="add-to-cart" data-movieid={m.data.id}>
-                Add to cart
-              </button>
-            </div>
-          </article>
-        ))
-      )}
+      {
+        movies.length === 0 ? (
+          <p>Sorry, No results found for "{searchQuery}"</p>
+        ) : (
+          movies.map((m) => (
+            <article
+              class="border-2 p-4"
+              data-genreids={m.data.genre_ids.join(",")}
+              data-title={m.data.title.toLowerCase()}
+            >
+              <a href={`/movie/info/${m.id}`}>
+                <img src={`https://image.tmdb.org/t/p/w300${m.data.poster_path}`} />
+                <h1>
+                  {m.data.title} ({m.data.release_date.slice(0, 4)})
+                </h1>
+                <div class="rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 115.53 110.12" class="star-icon">
+                    <polygon
+                      class="starSvg"
+                      points="57.77 2.5 74.84 37.1 113.03 42.65 85.4 69.59 91.92 107.62 57.77 89.66 23.61 107.62 30.13 69.59 2.5 42.65 40.69 37.1 57.77 2.5"
+                    />
+                  </svg>
+                  <span class="star-rating">{m.data.vote_average.toFixed(1)}</span>
+                </div>
+              </a>
+              <div class="buttonArea">
+                <button class="add-to-cart" data-movieid={m.data.id}>
+                  Add to cart
+                </button>
+              </div>
+            </article>
+          ))
+        )
+      }
     </section>
   </main>
-
 </BaseLayout>
 <style>
   section {
@@ -106,20 +111,48 @@ movies.sort((a, b) => a.data.title.localeCompare(b.data.title));
     padding-top: 2rem;
   }
   .buttonArea {
-    padding-top: 1rem;
+    padding-top: 16px;
+    height: 40px;
+    position: relative;
+    top: -30px;
   }
   #category-header-container {
     margin-top: 40px;
     justify-items: center;
   }
-  #category-header-container h1{
+  #category-header-container h1 {
     font-size: 3rem;
     color: #fff;
   }
-  #category-header-container p{
+  #category-header-container p {
     font-size: 1.5rem;
     margin-bottom: 50px;
     color: #aaa;
     padding-top: 20px;
+  }
+
+  .rating {
+    position: relative;
+    top: -112px;
+    left: 238px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .star-icon {
+    width: 60px;
+    height: 60px;
+    fill: rgba(255, 217, 0, 0.932);
+    position: absolute;
+  }
+
+  .star-rating {
+    position: absolute;
+    font-size: 17px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    pointer-events: none;
   }
 </style>
