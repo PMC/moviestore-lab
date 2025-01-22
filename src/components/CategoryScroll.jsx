@@ -1,4 +1,6 @@
 import moviesData from "../content/movies.json";
+import { createMoviePrice } from "../scripts/moviePrices";
+
 const movies = moviesData.results;
 
 function CategoryScroll({ category, movies }) {
@@ -22,7 +24,6 @@ function CategoryScroll({ category, movies }) {
               />
             </a>
             <h4 className="movieTitle">{movie.title}</h4>
-            <button className="add-to-cart" data-movieid={movie.id}> Add to cart </button>
             <div className="rating">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -36,6 +37,8 @@ function CategoryScroll({ category, movies }) {
               </svg>
               <span className="star-rating">{movie.vote_average.toFixed(1)}</span>
             </div>
+            <span class="unit-price">{createMoviePrice(movie.vote_average)}</span>
+            <button className="add-to-cart" data-movieid={movie.id}> Add to cart </button>
           </article>
         ))}
       </div>
