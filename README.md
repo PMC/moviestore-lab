@@ -70,9 +70,9 @@ To set up and run the project locally, follow these steps:
 
 ## Other resources (add if you find anything)
 
-- [5 ways to load data] (https://youtu.be/aS5id2273gY?si=4ukuxpXhy0GvO2ly) also watch this guy youtube channel because he has a lot of astro videos.
-- [Picocss documentation] (https://picocss.com/docs)
-- [Example themes from Astro own repo] (https://github.com/withastro/astro/tree/latest/examples)
-- [Live Code: Dev Learning Portfolio App in Astro] (https://www.youtube.com/watch?v=4xJsAgQYVkE)
+- [5 ways to load data](https://youtu.be/aS5id2273gY?si=4ukuxpXhy0GvO2ly) also watch this guy youtube channel because he has a lot of astro videos.
+- [Picocss documentation](https://picocss.com/docs)
+- [Example themes from Astro own repo](https://github.com/withastro/astro/tree/latest/examples)
+- [Live Code: Dev Learning Portfolio App in Astro](https://www.youtube.com/watch?v=4xJsAgQYVkE)
 
 
