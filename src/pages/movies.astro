@@ -6,12 +6,19 @@ import { createMoviePrice } from "../scripts/moviePrices";
 
 const url = new URL(Astro.request.url);
 const genre = url.searchParams.get("genre") || "all";
+const startYear = url.searchParams.get("startYear");
+const endYear = url.searchParams.get("endYear");
+const ranking = url.searchParams.get("ranking");
+const international = url.searchParams.get("international") || "all";
+const sortBy = url.searchParams.get("sortBy") || "alphabetical";
 const searchQuery = (url.searchParams.get("search") || "").toLowerCase();
 
 let movies = await getCollection("apiMovies");
 let genreHeader = "All Movies";
-let genreDescription = "These are all the movies available in alphabetical order.";
+let genreDescription =
+  "These are all the movies available in alphabetical order.";
 
+// Apply Genre Filter
 if (genre !== "all") {
   const selectedGenre = categories.genres.find((g) => g.id === parseInt(genre));
   if (selectedGenre) {
@@ -21,31 +28,235 @@ if (genre !== "all") {
   }
 }
 
+// Apply Year Filter
+if (startYear || endYear) {
+  movies = movies.filter((m) => {
+    const releaseYear = parseInt(m.data.release_date.slice(0, 4));
+    if (startYear && releaseYear < parseInt(startYear)) return false;
+    if (endYear && releaseYear > parseInt(endYear)) return false;
+    return true;
+  });
+}
+
+// Apply Ranking Filter
+if (ranking) {
+  movies = movies.filter((m) => {
+    const vote = m.data.vote_average;
+    if (ranking === "high") return vote >= 8.0;
+    if (ranking === "medium") return vote >= 5.0 && vote < 8.0;
+    if (ranking === "low") return vote < 5.0;
+    return true;
+  });
+}
+
+// Apply Language Filter
+if (international === "english") {
+  movies = movies.filter((m) => m.data.original_language === "en");
+} else if (international === "non-english") {
+  movies = movies.filter((m) => m.data.original_language !== "en");
+}
+
+// Apply Search Filter
 if (searchQuery.length >= 2) {
   genreHeader = "Search Results";
   genreDescription = `Results for your search: "${searchQuery}"`;
   movies = movies.filter((m) => {
     const titleMatches = m.data.title.toLowerCase().includes(searchQuery);
-    const year = m.data.release_date.slice(0, 4);
-    const yearMatches = year.includes(searchQuery);
-
+    const yearMatches = m.data.release_date.slice(0, 4).includes(searchQuery);
     return titleMatches || yearMatches;
   });
 }
 
-movies.sort((a, b) => a.data.title.localeCompare(b.data.title));
+// Apply Sorting
+movies.sort((a, b) => {
+  switch (sortBy) {
+    case "popularity":
+      return b.data.popularity - a.data.popularity;
+    case "ranking":
+      return b.data.vote_average - a.data.vote_average;
+    case "release_date":
+      return (
+        new Date(b.data.release_date).getTime() -
+        new Date(a.data.release_date).getTime()
+      );
+    default:
+      return a.data.title.localeCompare(b.data.title);
+  }
+});
 ---
 
-<script>
-  import { applyFadeIn } from "../scripts/fadeIn.js";
-  applyFadeIn();
-</script>
 <BaseLayout title="MovieStore-lab">
   <main class="container-fluid fade-in">
     <header id="category-header-container">
       <h1>{genreHeader}</h1>
       <p>{genreDescription}</p>
+      <button id="filter-toggle-button">Filters</button>
     </header>
+
+    <form id="filter-form" method="get" action="/movies">
+      <div class="filters">
+        <div class="filterInputContainer">
+          <!-- Genre Filter -->
+          <label for="genre-filter">Genre:</label>
+          <select id="genre-filter" name="genre">
+            <option value="all">All</option>
+            {
+              categories.genres.map((g) => (
+                <option value={g.id} selected={genre === `${g.id}`}>
+                  {g.name}
+                </option>
+              ))
+            }
+          </select>
+
+          <!-- Year Filter -->
+          <label for="start-year-filter">Start Year:</label>
+          <input
+            id="start-year-filter"
+            type="number"
+            name="startYear"
+            min="1900"
+            max={new Date().getFullYear()}
+            placeholder="Start Year"
+            value={url.searchParams.get("startYear") || ""}
+          />
+
+          <label for="end-year-filter">End Year:</label>
+          <input
+            id="end-year-filter"
+            type="number"
+            name="endYear"
+            min="1900"
+            max={new Date().getFullYear()}
+            placeholder="End Year"
+            value={url.searchParams.get("endYear") || ""}
+          />
+        </div>
+
+        <!-- Ranking Filter -->
+        <div class="radioContainer">
+          <fieldset>
+            <legend>Ranking:</legend>
+            <label>
+              <input
+                type="radio"
+                name="ranking"
+                value="all"
+                checked={!ranking || ranking === "all"}
+              />
+              All Ranks
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="ranking"
+                value="high"
+                checked={ranking === "high"}
+              />
+              &#8805; 8.0
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="ranking"
+                value="medium"
+                checked={ranking === "medium"}
+              />
+              5.0 - 7.9
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="ranking"
+                value="low"
+                checked={ranking === "low"}
+              />
+              &lt; 5.0
+            </label>
+          </fieldset>
+
+          <!-- International Filter -->
+          <fieldset>
+            <legend>Language:</legend>
+            <label>
+              <input
+                type="radio"
+                name="international"
+                value="all"
+                checked={international === "all"}
+              />
+              All Languages
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="international"
+                value="english"
+                checked={international === "english"}
+              />
+              English
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="international"
+                value="non-english"
+                checked={international === "non-english"}
+              />
+              Non-English
+            </label>
+          </fieldset>
+
+          <!-- Sorting Filter -->
+          <fieldset>
+            <legend>Sort By:</legend>
+            <label>
+              <input
+                type="radio"
+                name="sortBy"
+                value="alphabetical"
+                checked={sortBy === "alphabetical"}
+              />
+              Alphabetical
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="sortBy"
+                value="popularity"
+                checked={sortBy === "popularity"}
+              />
+              Popularity
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="sortBy"
+                value="ranking"
+                checked={sortBy === "ranking"}
+              />
+              Ranking
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="sortBy"
+                value="release_date"
+                checked={sortBy === "release_date"}
+              />
+              Release Date
+            </label>
+          </fieldset>
+        </div>
+      </div>
+
+      <!-- Buttons Section -->
+      <div class="buttonSection">
+        <button type="submit">Apply Filters</button>
+        <button type="reset" id="reset-button">Reset Filters</button>
+      </div>
+    </form>
+
     <section class="grid" id="movies-grid">
       {
         movies.length === 0 ? (
@@ -58,22 +269,32 @@ movies.sort((a, b) => a.data.title.localeCompare(b.data.title));
               data-title={m.data.title.toLowerCase()}
             >
               <a href={`/movie/info/${m.id}`}>
-                <img src={`https://image.tmdb.org/t/p/w300${m.data.poster_path}`} />
+                <img
+                  src={`https://image.tmdb.org/t/p/w300${m.data.poster_path}`}
+                />
                 <h1>
                   {m.data.title} ({m.data.release_date.slice(0, 4)})
                 </h1>
                 <div class="rating">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 115.53 110.12" class="star-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 115.53 110.12"
+                    class="star-icon"
+                  >
                     <polygon
                       class="starSvg"
                       points="57.77 2.5 74.84 37.1 113.03 42.65 85.4 69.59 91.92 107.62 57.77 89.66 23.61 107.62 30.13 69.59 2.5 42.65 40.69 37.1 57.77 2.5"
                     />
                   </svg>
-                  <span class="star-rating">{m.data.vote_average.toFixed(1)}</span>
+                  <span class="star-rating">
+                    {m.data.vote_average.toFixed(1)}
+                  </span>
                 </div>
               </a>
               <div class="buttonArea">
-                <span class="unit-price">Price: {createMoviePrice(m.data.vote_average)}</span>
+                <span class="unit-price">
+                  Price: {createMoviePrice(m.data.vote_average)}
+                </span>
                 <button class="add-to-cart" data-movieid={m.data.id}>
                   Add to cart
                 </button>
@@ -85,7 +306,78 @@ movies.sort((a, b) => a.data.title.localeCompare(b.data.title));
     </section>
   </main>
 </BaseLayout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const resetButton = document.getElementById(
+      "reset-button",
+    ) as HTMLButtonElement;
+    const filterForm = document.getElementById(
+      "filter-form",
+    ) as HTMLFormElement; 
+    const filterButton = document.getElementById("filter-toggle-button");
+
+    resetButton.addEventListener("click", () => {
+      filterForm.reset();
+      window.location.href = "/movies";
+    });
+
+    filterForm.style.height = "0";
+    filterForm.style.opacity = "0";
+    filterForm.style.overflow = "hidden";
+    filterForm.style.transition = "height 0.5s ease, opacity 0.5s ease";
+
+    filterButton.addEventListener("click", () => {
+      if (filterForm.style.height === "0px") {
+        filterForm.style.height = "600px";
+        setTimeout(() => {
+          filterForm.style.opacity = "1";
+        }, 500);
+      } else {
+        filterForm.style.opacity = "0";
+        setTimeout(() => {
+          filterForm.style.height = "0";
+        }, 500);
+      }
+    });
+  });
+</script>
 <style>
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    justify-content: center;
+  }
+
+  .filters label {
+    margin-right: 0.5rem;
+  }
+
+  .filters input,
+  .filters select,
+  .filters button {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+
+  #filter-form {
+    margin-bottom: 2rem;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  select,
+  #start-year-filter,
+  #end-year-filter {
+    width: 140px;
+  }
+
   section {
     grid-template-columns: repeat(auto-fill, 30ch);
   }
@@ -163,5 +455,85 @@ movies.sort((a, b) => a.data.title.localeCompare(b.data.title));
   }
   .unit-price {
     margin-right: 1.2rem;
+  }
+
+  .radioContainer {
+    display: flex;
+    flex-direction: row;
+    margin-left: 100px;
+  }
+
+  .radioContainer fieldset {
+    width: 250px;
+  }
+
+  .filterInputContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #filter-toggle-button {
+    margin-bottom: 75px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: #444;
+    border: none;
+    border-radius: 5px;
+  }
+
+  #filter-form {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      height 0.5s ease,
+      opacity 0.5s ease;
+  }
+
+  .buttonSection {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin: 0 auto;
+  }
+
+  .buttonSection button {
+    padding: 0.5em 0;
+  }
+
+  @media (max-width: 900px) {
+    select,
+    #start-year-filter,
+    #end-year-filter {
+      width: 100vw;
+      margin: 0 auto;
+    }
+
+    .radioContainer {
+      flex-direction: column;
+      width: 100%;
+      margin: 0;
+      justify-items: center;
+    }
+
+    .buttonSection {
+      display: flex;
+      flex-direction: column;
+      width: 150px;
+      margin: 0 auto;
+    }
+
+    .buttonSection button {
+      padding: 0.5em 0;
+    }
+
+    .radioContainer fieldset {
+      width: 150px;
+      margin: 0 auto;
+    }
+
+    #genre-filter option {
+      font-size: 0.8rem;
+    }
   }
 </style>
