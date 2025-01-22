@@ -19,8 +19,9 @@
 #nav-links {
   display: flex;
   list-style: none;
-  margin: 0 0 0 auto;
+  position: absolute;
   padding: 0;
+  right: 170px;
   align-items: center;
 }
 
@@ -49,13 +50,21 @@
   color: var(--pico-primary-focus);
 }
 
+#cartIcon {
+  position: absolute;
+  right: 5.5em;
+}
+
+
 @keyframes jump {
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -74,9 +83,19 @@
     transform: translateY(-50%);
   }
 
+  #cartIcon {
+    position: absolute;
+    right: 4.5em;
+  }
+
+  #cart-count {
+    position: absolute;
+    right: 3.25em;
+  }
+
   #cart-link {
-    position: relative;
-    margin: 0 50px 0 0;
+    position: absolute;
+    left: 15.5em;
   }
 
   #nav-links {
