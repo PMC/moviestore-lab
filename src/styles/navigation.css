@@ -49,12 +49,28 @@
   color: var(--pico-primary-focus);
 }
 
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.add-to-cart.jump {
+  animation: jump 0.5s ease-in-out;
+}
+
 @media (max-width: 900px) {
   #hamburger-menu {
     display: block;
     position: absolute;
     top: 50%;
-    right: 10px; /* Align the burger menu to the right */
+    right: 10px;
     transform: translateY(-50%);
   }
 
@@ -97,6 +113,6 @@
   }
 
   #topnav {
-    flex-wrap: nowrap; /* Ensure items stay on the same row */
+    flex-wrap: nowrap;
   }
 }

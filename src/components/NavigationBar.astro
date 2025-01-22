@@ -30,37 +30,38 @@ import "../styles/navigation.css";
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    updateCartCount();
+  updateCartCount();
 
-    const buttons = document.querySelectorAll(".add-to-cart");
-    buttons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const movieId = parseInt(btn.getAttribute("data-movieid"));
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-        const existingItem = cart.find((item) => item.id === movieId);
+  const buttons = document.querySelectorAll(".add-to-cart");
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const movieId = parseInt(btn.getAttribute("data-movieid"));
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const existingItem = cart.find((item) => item.id === movieId);
 
-        if (existingItem) {
-          existingItem.quantity += 1;
-        } else {
-          cart.push({ id: movieId, quantity: 1 });
-        }
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ id: movieId, quantity: 1 });
+      }
 
-        localStorage.setItem("cart", JSON.stringify(cart));
-        updateCartCount();
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
 
-        const originalText = btn.textContent;
-        btn.textContent = "Movie added!";
-        btn.disabled = true;
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.disabled = false;
-        }, 500);
-      });
-    });
-    const hamburgerMenu = document.getElementById("hamburger-menu");
-    const navLinks = document.getElementById("nav-links");
-    hamburgerMenu.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
+      btn.classList.add("jump");
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.classList.remove("jump");
+        btn.disabled = false;
+      }, 500);
     });
   });
+
+  const hamburgerMenu = document.getElementById("hamburger-menu");
+  const navLinks = document.getElementById("nav-links");
+  hamburgerMenu.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+});
 </script>
