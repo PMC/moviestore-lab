@@ -35,7 +35,7 @@ movies.sort((a, b) => a.data.title.localeCompare(b.data.title));
 
 <BaseLayout title="MovieStore-lab">
   <main class="container-fluid">
-    <header>
+    <header id="category-header-container">
       <h1>{genreHeader}</h1>
       <p>{genreDescription}</p>
     </header>
@@ -104,5 +104,19 @@ movies.sort((a, b) => a.data.title.localeCompare(b.data.title));
   }
   .buttonArea {
     padding-top: 1rem;
+  }
+  #category-header-container {
+    margin-top: 40px;
+    justify-items: center;
+  }
+  #category-header-container h1{
+    font-size: 3rem;
+    color: #fff;
+  }
+  #category-header-container p{
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+    color: #aaa;
+    padding-top: 20px;
   }
 </style>
