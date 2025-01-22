@@ -10,6 +10,7 @@ function CategoryScroll({ category, movies }) {
     <section className="category-scroll-section">
       <h2 className="categoryTitle">
         <a href={`/movies?genre=${category.id}`}>{category.name}</a>
+        <span>Explore All {category.name} Movies</span>
       </h2>
       <div className="category-scroll">
         {categoryMovies.map((movie) => (

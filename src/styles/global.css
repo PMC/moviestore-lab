@@ -2,12 +2,12 @@
 
 :root {
     --text-color: #000;
-    /* Default color for light theme */
+    --text-color-invert: #fff;
 }
 
 [data-theme="dark"] {
     --text-color: #fff;
-    /* Color for dark theme */
+    --text-color-invert: #000;
 }
 
 html {
