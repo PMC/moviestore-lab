@@ -21,6 +21,8 @@ if (genre !== "all") {
 }
 
 if (searchQuery.length >= 2) {
+  genreHeader = "Search Results";
+  genreDescription = `Results for your search: "${searchQuery}"`;
   movies = movies.filter((m) => {
     const titleMatches = m.data.title.toLowerCase().includes(searchQuery);
     const year = m.data.release_date.slice(0, 4);
