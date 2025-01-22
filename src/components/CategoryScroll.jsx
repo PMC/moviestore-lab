@@ -22,8 +22,9 @@ function CategoryScroll({ category, movies }) {
                 src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
                 alt={movie.title}
               />
+              <h4 className="movieTitle">{movie.title}</h4>
             </a>
-            <h4 className="movieTitle">{movie.title}</h4>
+            
             <div className="rating">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

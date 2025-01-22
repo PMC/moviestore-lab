@@ -147,6 +147,10 @@
   transition: transform 0.5s ease;
 }
 
+.movie-poster a {
+  text-decoration: none;
+}
+
 .movie-poster:hover img {
   animation: zoom 5s ease-in-out forwards;
 }
