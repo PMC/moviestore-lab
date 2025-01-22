@@ -6,7 +6,7 @@ const { title = "MovieStore-lab" } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -16,6 +16,10 @@ const { title = "MovieStore-lab" } = Astro.props;
   </head>
   <body>
     <NavigationBar />
+    <script>
+      import { switchTheme } from "../scripts/themeSwitcher.js";
+      switchTheme();
+    </script>
     <slot />
     <Footer />
   </body>
