@@ -137,10 +137,15 @@ const filteredCredits = credits.cast
       {
         filteredCredits.map((cc) => (
           <div class="flow-items">
-            <img src={`https://image.tmdb.org/t/p/w200/${cc.profile_path}`} />{" "}
-            <p class="creditsText">
-              {cc.name} as {cc.character} ({cc.known_for_department})
-            </p>{" "}
+            <img src={`https://image.tmdb.org/t/p/w200/${cc.profile_path}`} />
+            <p>
+              ({cc.known_for_department})<br />
+              <>
+                <strong>{cc.character}</strong>
+                <br />
+              </>
+              {cc.name} <br />
+            </p>
           </div>
         ))
       }
@@ -184,8 +189,8 @@ const filteredCredits = credits.cast
   .flow-items {
     flex-wrap: wrap;
     text-align: center;
-    margin-right: 20px;
-    margin-left: 20px;
+    margin-right: 12px;
+    margin-left: 12px;
     margin-top: 20px;
   }
 </style>
