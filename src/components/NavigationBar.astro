@@ -7,23 +7,14 @@ import "../styles/navigation.css";
   <ul class="nav-left">
     <li><a id="indexLink" href="/">TheMovieStore</a></li>
   </ul>
-  <ul class="nav-center">
+
+  <ul class="nav-right">
     <li>
       <form action="/movies" method="get" style="display: inline;">
-        <input
-          type="search"
-          name="search"
-          placeholder="Search"
-          aria-label="Search"
-          id="search-navbar"
-          minlength="2"
-        />
+        <input type="search" name="search" placeholder="Search" aria-label="Search" id="search-navbar" minlength="2" />
       </form>
     </li>
-    <GenreDropdown />
-  </ul>
-  <ul class="nav-right">
-    
+    <li id="GenreDropdown"><GenreDropdown /></li>
     <li><a href="/contact">Contact</a></li>
     <li>
       <a id="cart-link" href="/checkout">

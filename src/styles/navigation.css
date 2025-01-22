@@ -1,50 +1,54 @@
 #indexLink {
-    font-size: 1.5rem;
-    font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 #topnav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 var(--pico-spacing);
-    background-color: #202632;
-    position: fixed;
-    z-index: 999;
-    height: 80px;
-    top: 0;
-    left: 0;
-    right: 0;
-    box-shadow: var(--pico-box-shadow);
-  }
-  
-  #topnav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-  }
-  
-  #topnav .nav-left {
-    justify-content: flex-start;
-  }
-  
-  #topnav .nav-center {
-    flex-grow: 1;
-    justify-content: center;
-  }
-  
-  #topnav .nav-right {
-    justify-content: flex-end;
-  }
-  
-  #topnav a {
-    color: lightgray;
-    text-decoration: none;
-    padding: 0 10px;
-  }
-  
-  #topnav a:hover {
-    color: var(--pico-primary-focus);
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--pico-spacing);
+  background-color: #202632;
+  position: fixed;
+  z-index: 999;
+  height: 80px;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: var(--pico-box-shadow);
+}
+
+#GenreDropdown {
+  display: contents;
+}
+#topnav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+#topnav .nav-left {
+  justify-content: flex-start;
+}
+
+#topnav .nav-center {
+  flex-grow: 1;
+
+  justify-content: center;
+}
+
+#topnav .nav-right {
+  justify-content: flex-end;
+}
+
+#topnav a {
+  color: lightgray;
+  text-decoration: none;
+  padding: 0 10px;
+}
+
+#topnav a:hover {
+  color: var(--pico-primary-focus);
+}
