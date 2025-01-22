@@ -50,6 +50,11 @@
 
 /* Categories */
 
+.categoryTitle a {
+  text-decoration: none;
+  color: #fff;
+}
+
 .category-scroll-section {
   margin: 2rem 0;
 }
