@@ -6,7 +6,7 @@ This project is a web application designed to provide movie-related information 
 
 ## Project Information
 
-This Project was created by PMC, Dilan and Sowmya. 
+Contributors:
 - [PMC](https://github.com/PMC)
 - [Dilan](https://github.com/dc91)
 - [Sowmyak059](https://github.com/Sowmyak059)
