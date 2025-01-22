@@ -1,9 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
+<script>
+  import { applyFadeIn } from "../scripts/fadeIn.js";
+  applyFadeIn();
+</script>
 
 <BaseLayout title="MovieStore-lab">
-  <main class="container">
+  <main class="container fade-in">
     <h1>Customer Support</h1>
     <p class="intro">We're here to make your movie shopping experience smooth, enjoyable, and memorable.</p>
 

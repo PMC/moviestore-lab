@@ -4,8 +4,13 @@ import Cart from "../components/Cart.jsx"; // React component to handle cart log
 import "../styles/checkout.css";
 ---
 
+<script>
+  import { applyFadeIn } from "../scripts/fadeIn.js";
+  applyFadeIn();
+</script>
+
 <BaseLayout title="MovieStore-lab">
-  <main class="container-fluid">
+  <main class="container-fluid fade-in">
     <Cart client:load />
   </main>
 </BaseLayout>

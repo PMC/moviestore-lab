@@ -14,12 +14,8 @@ const movies = moviesData.results;
 ---
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const fadeInElement = document.querySelector(".fade-in");
-    if (fadeInElement) {
-      fadeInElement.classList.add("visible");
-    }
-  });
+  import { applyFadeIn } from "../scripts/fadeIn.js";
+  applyFadeIn();
 </script>
 
 <BaseLayout title="MovieStore-lab">
