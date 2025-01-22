@@ -4,7 +4,7 @@ const movies = moviesData.results;
 function CategoryScroll({ category, movies }) {
   const categoryMovies = movies
     .filter((m) => m.genre_ids.includes(category.id))
-    .slice(0, 15);
+    .slice(0, 20);
 
   return (
     <section className="category-scroll-section">

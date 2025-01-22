@@ -7,7 +7,9 @@ import "../styles/front.css";
 import categoriesData from "../content/categories.json";
 import moviesData from "../content/movies.json";
 
-const categories = categoriesData.genres.slice(0, 5);
+const genresToLoad = [12, 53, 18, 878, 28, 27];
+
+const categories = categoriesData.genres.filter(genre => genresToLoad.includes(genre.id));
 const movies = moviesData.results;
 ---
 
