@@ -1,15 +1,23 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import categories from "../content/categories.json";
 
 const url = new URL(Astro.request.url);
 const genre = url.searchParams.get("genre") || "all";
 const searchQuery = (url.searchParams.get("search") || "").toLowerCase();
 
 let movies = await getCollection("apiMovies");
+let genreHeader = "All Movies";
+let genreDescription = "These are all the movies available in alphabetical order.";
 
 if (genre !== "all") {
-  movies = movies.filter((m) => m.data.genre_ids.includes(parseInt(genre)));
+  const selectedGenre = categories.genres.find((g) => g.id === parseInt(genre));
+  if (selectedGenre) {
+    genreHeader = selectedGenre.name;
+    genreDescription = `Explore our selection of ${selectedGenre.name} movies.`;
+    movies = movies.filter((m) => m.data.genre_ids.includes(parseInt(genre)));
+  }
 }
 
 if (searchQuery.length >= 2) {
@@ -27,6 +35,10 @@ movies.sort((a, b) => a.data.title.localeCompare(b.data.title));
 
 <BaseLayout title="MovieStore-lab">
   <main class="container-fluid">
+    <header>
+      <h1>{genreHeader}</h1>
+      <p>{genreDescription}</p>
+    </header>
     <section class="grid" id="movies-grid">
       {movies.length === 0 ? (
         <p>Sorry, No results found for "{searchQuery}"</p>
