@@ -77,7 +77,7 @@ const Cart = () => {
             <th>Movie Title</th>
             <th>Quantity</th>
             <th>Price</th>
-            <th>Actions</th>
+            <th>Remove</th>
           </tr>
         </thead>
         <tbody>
@@ -98,7 +98,7 @@ const Cart = () => {
                       +
                     </button>
                     <span className="quantity-number">{item.quantity}</span>
-                    <button type="button" onClick={() => updateQuantity(item.id, -1)}>
+                    <button id="minusBtn" type="button" onClick={() => updateQuantity(item.id, -1)}>
                       -
                     </button>
                   </div>
@@ -114,9 +114,7 @@ const Cart = () => {
               </td>
               <td>
                 <div className="remove-button-container">
-                  <button type="button" onClick={() => removeItem(item.id)}>
-                    Remove
-                  </button>
+                  <button id="removeBtn" aria-label="Remove" type="button" onClick={() => removeItem(item.id)} />
                 </div>
               </td>
             </tr>
