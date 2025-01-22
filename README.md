@@ -60,9 +60,10 @@ To set up and run the project locally, follow these steps:
 ## Technologies Used
 
 - **Astro**: A modern static site builder.
-- **Tailwind CSS**: For styling the application.
+- **React**: For server side things.
+- **JavaScript**: Just because the web is built using it.
 - **TMDB API**: Provides movie data for the application.
-- **Pico CSS**: Minimal CSS from Pico
+- **Pico CSS**: For styling the webpage.
 
 ## Learn More
 
