@@ -67,7 +67,6 @@ credits.cast.map((a) => {
   }
 });
 
-
 //add crew directors
 
 credits.crew.map((d) => {
@@ -77,11 +76,11 @@ credits.crew.map((d) => {
 });
 directors = directors.slice(0, directors.length - 2);
 
-const filteredCredits = credits.cast.filter((num) => num.profile_path !== null)
- .map((value) => {
+const filteredCredits = credits.cast
+  .filter((num) => num.profile_path !== null)
+  .map((value) => {
     return value;
-});
-
+  });
 ---
 
 <section>
@@ -130,38 +129,31 @@ const filteredCredits = credits.cast.filter((num) => num.profile_path !== null)
     <footer>
       <button class="add-to-cart" data-movieid={movie.id}> Add to cart </button>
     </footer>
-
   </article>
-  <article class="border-2 p-4">
+  <article>
     <h1>Credits</h1>
-    <hr>
-    <section class="grid credits p-100">
-    
-    {filteredCredits.map((cc) => <img src={`https://image.tmdb.org/t/p/w200/${cc.profile_path}`} /> <footer class="creditsText">{cc.name} as {cc.character} ({cc.known_for_department})</footer> )}
-
-  </section>
+    <hr />
+    <section class="flow-credit">
+      {
+        filteredCredits.map((cc) => (
+          <div class="flow-items">
+            <img src={`https://image.tmdb.org/t/p/w200/${cc.profile_path}`} />{" "}
+            <p class="creditsText">
+              {cc.name} as {cc.character} ({cc.known_for_department})
+            </p>{" "}
+          </div>
+        ))
+      }
+    </section>
   </article>
-  
 </section>
-
 
 <style>
   ::body {
     font-size: 16px;
   }
   .credits {
-    border-color: rgba(0, 0, 0, 0.432);
-
-    grid-template-columns: repeat(8, 200px);
-    @media (width <= 1600px) {
-      grid-template-columns: repeat(6, 200px);
-    }
-    @media (width <= 1168px) {
-      grid-template-columns: repeat(4, 200px );
-    }
-    @media (width <= 708px) {
-      grid-template-columns: 200px;
-    }
+    display: flex;
   }
 
   div {
@@ -184,17 +176,16 @@ const filteredCredits = credits.cast.filter((num) => num.profile_path !== null)
   article ul {
     color: var(--pico-h3-color);
   }
-  .creditsText 
-  {
-    margin-bottom: 350px;
-    position: relative;
-    top: 310px;
-    left: -210px;
-    @media (width <= 708px) {
-     position: initial;
-     top: initial;
-     left:initial;
-     margin-bottom: initial;
-    }
+
+  .flow-credit {
+    display: inline-flex;
+    flex-wrap: wrap;
+  }
+  .flow-items {
+    flex-wrap: wrap;
+    text-align: center;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
   }
 </style>
