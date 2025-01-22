@@ -1,5 +1,19 @@
 @import url(pico.min.css);
 
+:root {
+    --text-color: #000;
+    /* Default color for light theme */
+}
+
+[data-theme="dark"] {
+    --text-color: #fff;
+    /* Color for dark theme */
+}
+
+html {
+    overflow-y: scroll;
+}
+
 .fade-in {
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
@@ -9,6 +23,3 @@
     opacity: 1;
 }
 
-html {
-    overflow-y: scroll;
-  }

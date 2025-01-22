@@ -52,7 +52,7 @@
 
 .categoryTitle a {
   text-decoration: none;
-  color: #000;
+  color: var(--text-color);
 }
 
 .category-scroll-section {
