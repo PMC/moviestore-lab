@@ -3,6 +3,7 @@ interface Props {
   movieid: string;
 }
 import { API_SECRET_TOKEN } from "astro:env/server";
+import { createMoviePrice } from "../scripts/moviePrices";
 
 const fetchData = async () => {
   try {
@@ -132,6 +133,7 @@ const filteredCrew = credits.crew
       </ul>
     </div>
     <footer>
+      <span class="unit-price">Price: {createMoviePrice(movie.vote_average)}</span>
       <button class="add-to-cart" data-movieid={movie.id}> Add to cart </button>
     </footer>
   </article>
@@ -212,5 +214,8 @@ const filteredCrew = credits.crew
     margin-right: 12px;
     margin-left: 12px;
     margin-top: 20px;
+  }
+  .unit-price {
+    margin-right: 1.2rem;
   }
 </style>
