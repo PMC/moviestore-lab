@@ -147,6 +147,10 @@
   transition: transform 0.5s ease;
 }
 
+.movie-poster a {
+  text-decoration: none;
+}
+
 .movie-poster:hover img {
   animation: zoom 5s ease-in-out forwards;
 }
@@ -159,10 +163,16 @@
   padding: 20px;
 }
 
+.unit-price {
+  position: absolute;
+  bottom: 15px;
+  left: 12px;
+}
+
 .rating {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  top: 213px;
+  right: 22px;
   width: 40px;
   height: 40px;
   display: inline-flex;
@@ -187,7 +197,7 @@
 
 .movieTitle {
   margin-top: 15px;
-  padding-bottom: 50px;
+  padding-bottom: 25px;
   font-size: 0.9rem;
   justify-self: center;
 }
@@ -195,7 +205,7 @@
 .add-to-cart {
   position: absolute;
   bottom: 10px;
-  left: 10px;
+  right: 10px;
   padding: 5px;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
