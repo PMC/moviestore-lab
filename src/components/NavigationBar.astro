@@ -1,12 +1,13 @@
 ---
 import GenreDropdown from "../components/GenreDropdown.astro";
+import "../styles/navigation.css";
 ---
 
 <nav id="topnav">
-  <ul>
-    <li><a href="/">TheMovieStore</a></li>
+  <ul class="nav-left">
+    <li><a id="indexLink" href="/">TheMovieStore</a></li>
   </ul>
-  <ul>
+  <ul class="nav-center">
     <li>
       <form action="/movies" method="get" style="display: inline;">
         <input
@@ -20,6 +21,9 @@ import GenreDropdown from "../components/GenreDropdown.astro";
       </form>
     </li>
     <GenreDropdown />
+  </ul>
+  <ul class="nav-right">
+    
     <li><a href="/contact">Contact</a></li>
     <li>
       <a id="cart-link" href="/checkout">
@@ -66,32 +70,3 @@ import GenreDropdown from "../components/GenreDropdown.astro";
     });
   });
 </script>
-
-<style>
-  #topnav {
-    padding-left: var(--pico-spacing);
-    padding-right: var(--pico-spacing);
-    background-color: #202632;
-    position: fixed;
-    z-index: 999;
-    height: 55px;
-    top: 0;
-    left: 0;
-    right: 0;
-    box-shadow: var(--pico-box-shadow);
-  }
-
-  #topnav a {
-    color: lightgray;
-  }
-
-  #topnav a:hover {
-    color: var(--pico-primary-focus);
-  }
-
-  #search-navbar {
-    top: 5px;
-    left: 150px;
-    width: auto;
-  }
-</style>

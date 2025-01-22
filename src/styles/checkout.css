@@ -63,3 +63,12 @@
 .remove-button-container {
     margin-top: 50px;
 }
+
+#checkoutMainTitle {
+    margin-top: 80px;
+}
+
+#grandTotalTitle {
+    justify-self: end;
+    margin-bottom: 100px;
+}

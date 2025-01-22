@@ -70,7 +70,7 @@ const Cart = () => {
 
   return (
     <div className="container checkout-page">
-      <h1>Checkout</h1>
+      <h1 id="checkoutMainTitle">Checkout</h1>
       <table>
         <thead>
           <tr>
@@ -120,7 +120,7 @@ const Cart = () => {
         </tbody>
       </table>
 
-      <h3>Grand Total: ${grandTotal.toFixed(2)}</h3>
+      <h3 id="grandTotalTitle">Grand Total: ${grandTotal.toFixed(2)}</h3>
 
       <form method="POST" action="#">
         <h2>Customer Information</h2>
