@@ -3,6 +3,10 @@
   font-weight: bold;
 }
 
+#GenreDropdown {
+  display: contents;
+}
+
 #hamburger-menu {
   display: none;
   font-size: 1.5rem;
@@ -20,10 +24,10 @@
   align-items: center;
 }
 
+
 #topnav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 0 var(--pico-spacing);
   background-color: #202632;
   position: fixed;
@@ -53,6 +57,7 @@
   #nav-links {
     display: none;
     flex-direction: column;
+    align-items: stretch;
     background-color: #202632;
     position: absolute;
     top: 80px;
@@ -67,6 +72,18 @@
   }
 
   #nav-links li {
-    margin: 10px 0;
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
   }
+  #GenreDropdown {
+    text-align: center; 
+  }
+
+  #GenreDropdown::after {
+    content: '';
+    display: block;
+    height: 20px;
+  }
+
 }
