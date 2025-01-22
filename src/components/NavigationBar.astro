@@ -4,11 +4,11 @@ import "../styles/navigation.css";
 ---
 
 <nav id="topnav">
-  <ul class="nav-left">
-    <li><a id="indexLink" href="/">TheMovieStore</a></li>
-  </ul>
-
-  <ul class="nav-right">
+  <a id="indexLink" href="/">TheMovieStore</a>
+  <button id="hamburger-menu" aria-label="Toggle navigation">
+    ☰
+  </button>
+  <ul id="nav-links">
     <li>
       <form action="/movies" method="get" style="display: inline;">
         <input type="search" name="search" placeholder="Search" aria-label="Search" id="search-navbar" minlength="2" />
@@ -58,6 +58,11 @@ import "../styles/navigation.css";
           btn.disabled = false;
         }, 500);
       });
+    });
+    const hamburgerMenu = document.getElementById("hamburger-menu");
+    const navLinks = document.getElementById("nav-links");
+    hamburgerMenu.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
     });
   });
 </script>

@@ -3,6 +3,23 @@
   font-weight: bold;
 }
 
+#hamburger-menu {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: lightgray;
+  cursor: pointer;
+}
+
+#nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
 #topnav {
   display: flex;
   align-items: center;
@@ -18,31 +35,6 @@
   box-shadow: var(--pico-box-shadow);
 }
 
-#GenreDropdown {
-  display: contents;
-}
-#topnav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-}
-
-#topnav .nav-left {
-  justify-content: flex-start;
-}
-
-#topnav .nav-center {
-  flex-grow: 1;
-
-  justify-content: center;
-}
-
-#topnav .nav-right {
-  justify-content: flex-end;
-}
-
 #topnav a {
   color: lightgray;
   text-decoration: none;
@@ -51,4 +43,30 @@
 
 #topnav a:hover {
   color: var(--pico-primary-focus);
+}
+
+@media (max-width: 900px) {
+  #hamburger-menu {
+    display: block;
+  }
+
+  #nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #202632;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    left: 0;
+    z-index: 998;
+    padding: 10px;
+  }
+
+  #nav-links.show {
+    display: flex;
+  }
+
+  #nav-links li {
+    margin: 10px 0;
+  }
 }
