@@ -31,8 +31,7 @@ function CategoryScroll({ category, movies }) {
             </div>
             <span className="unit-price">{createMoviePrice(movie.vote_average)}</span>
             <button className="add-to-cart" data-movieid={movie.id}>
-              {" "}
-              Add to cart{" "}
+              Add to cart
             </button>
           </article>
         ))}
