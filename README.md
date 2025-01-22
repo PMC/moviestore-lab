@@ -4,7 +4,7 @@
 
 Welcome to MovieStore-Lab, the ultimate online movie store! Browse the "aisles" of cinematic hits, hidden gems, and cult classics. Whether you’re hunting for today’s top picks or yesterday’s treasures, we’ve got the “stock” to keep your watchlist full. Powered by TMDB, it’s your ticket to a virtual movie shopping spree! 🎟️
 
-Naaa, this isnt a real store, just a Learning Project! But it could be real someday maybe ? :P
+Naaa, this isnt a real store, just a Learning Project! But it could be real someday maybe ? 😁
 
 ## Project Information
 
