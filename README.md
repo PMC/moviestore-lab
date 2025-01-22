@@ -6,10 +6,6 @@ Welcome to MovieStore-Lab, the ultimate online movie store! Browse the "aisles" 
 
 Naaa, this isnt a real store, just a Learning Project, but it could be real, someday maybe ? :P
 
-## General Info
-
-This project is a web application designed to provide movie-related information to users. It utilizes the [TMDB (The Movie Database)](https://www.themoviedb.org/) API to fetch and display movie data.
-
 ## Project Information
 
 Contributors:
