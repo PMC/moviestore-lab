@@ -1,1 +1,10 @@
 @import url(pico.min.css);
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+}

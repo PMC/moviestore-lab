@@ -11,12 +11,33 @@ const categories = categoriesData.genres.slice(0, 5);
 const movies = moviesData.results;
 ---
 
-<BaseLayout title="MovieStore-lab">
-  <main class="container-fluid">
-    <WelcomeTop />
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const fadeInElement = document.querySelector(".fade-in");
+    if (fadeInElement) {
+      fadeInElement.classList.add("visible");
+    }
+  });
+</script>
 
-    {categories.map((cat) => (
-      <CategoryScroll category={cat} movies={movies} client:load />
-    ))}
+<BaseLayout title="MovieStore-lab">
+  <main class="container-fluid fade-in">
+    <WelcomeTop />
+    {
+      categories.map((cat) => (
+        <CategoryScroll category={cat} movies={movies} client:load />
+      ))
+    }
   </main>
 </BaseLayout>
+
+<style>
+  .fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+  }
+</style>

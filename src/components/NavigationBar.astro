@@ -28,14 +28,17 @@ import GenreDropdown from "../components/GenreDropdown.astro";
     </li>
   </ul>
 </nav>
+
 <script is:inline>
   function updateCartCount() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
     document.getElementById("cart-count").textContent = totalItems;
   }
+
   document.addEventListener("DOMContentLoaded", () => {
     updateCartCount();
+
     const buttons = document.querySelectorAll(".add-to-cart");
     buttons.forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -63,6 +66,7 @@ import GenreDropdown from "../components/GenreDropdown.astro";
     });
   });
 </script>
+
 <style>
   #topnav {
     padding-left: var(--pico-spacing);
@@ -76,16 +80,18 @@ import GenreDropdown from "../components/GenreDropdown.astro";
     right: 0;
     box-shadow: var(--pico-box-shadow);
   }
+
   #topnav a {
     color: lightgray;
   }
+
   #topnav a:hover {
     color: var(--pico-primary-focus);
   }
+
   #search-navbar {
     top: 5px;
     left: 150px;
     width: auto;
   }
-
 </style>

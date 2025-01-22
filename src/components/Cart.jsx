@@ -85,22 +85,35 @@ const Cart = () => {
             <tr key={item.id}>
               <td>
                 <a href={`/movie/info/${item.id}`}>
-                  <img src={getMovieImage(item.id)} alt="img" />
-                  {getMovieTitle(item.id)}
+                  <div className="movie-info">
+                    <img src={getMovieImage(item.id)} alt="img" />
+                    <span>{getMovieTitle(item.id)}</span>
+                  </div>
                 </a>
               </td>
-              <td>{item.quantity}</td>
-              <td>{createMoviePrice(item.id)}</td>
               <td>
-                <button type="button" onClick={() => updateQuantity(item.id, 1)}>
-                  +
-                </button>
-                <button type="button" onClick={() => updateQuantity(item.id, -1)}>
-                  -
-                </button>
-                <button type="button" onClick={() => removeItem(item.id)}>
-                  Remove
-                </button>
+                <div className="quantity-container">
+                  <div className="quantity-buttons">
+                    <button type="button" onClick={() => updateQuantity(item.id, 1)}>+</button>
+                    <span className="quantity-number">{item.quantity}</span>
+                    <button type="button" onClick={() => updateQuantity(item.id, -1)}>-</button>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div className="price-container">
+                  <span className="unit-price">{createMoviePrice(item.id)}</span>
+                  <span className="total-price">
+                    Total: ${(getNumericPrice(item.id) * item.quantity).toFixed(2)}
+                  </span>
+                </div>
+              </td>
+              <td>
+                <div className="remove-button-container">
+                  <button type="button" onClick={() => removeItem(item.id)}>
+                    Remove
+                  </button>
+                </div>
               </td>
             </tr>
           ))}
