@@ -17,51 +17,49 @@ import "../styles/navigation.css";
     <li id="GenreDropdown"><GenreDropdown /></li>
     <li id="contactLink"><a href="/contact">Contact</a></li>
   </ul>
-    <a id="cart-link" href="/checkout">
-      <span id="cartIcon">🛒</span> <span id="cart-count"></span> items
-    </a>
+  <a id="cart-link" href="/checkout">
+    <span id="cartIcon">🛒</span><span id="cart-count"></span> items
+  </a>
 </nav>
 
 <script is:inline>
-  function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-    document.getElementById("cart-count").textContent = totalItems;
-  }
-
   document.addEventListener("DOMContentLoaded", () => {
-  updateCartCount();
+    const buttons = document.querySelectorAll(".add-to-cart");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const movieId = parseInt(btn.getAttribute("data-movieid"));
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const existingItem = cart.find((item) => item.id === movieId);
 
-  const buttons = document.querySelectorAll(".add-to-cart");
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const movieId = parseInt(btn.getAttribute("data-movieid"));
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      const existingItem = cart.find((item) => item.id === movieId);
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({ id: movieId, quantity: 1 });
+        }
 
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        cart.push({ id: movieId, quantity: 1 });
-      }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
-      localStorage.setItem("cart", JSON.stringify(cart));
-      updateCartCount();
+        // Update the cart count dynamically
+        const style = document.getElementById('cart-count-style');
+        if (style) {
+          style.textContent = `#cart-count::before { content: "${totalItems}"; }`;
+        }
 
-      btn.classList.add("jump");
-      btn.disabled = true;
+        btn.classList.add("jump");
+        btn.disabled = true;
 
-      setTimeout(() => {
-        btn.classList.remove("jump");
-        btn.disabled = false;
-      }, 500);
+        setTimeout(() => {
+          btn.classList.remove("jump");
+          btn.disabled = false;
+        }, 500);
+      });
+    });
+
+    const hamburgerMenu = document.getElementById("hamburger-menu");
+    const navLinks = document.getElementById("nav-links");
+    hamburgerMenu.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
     });
   });
-
-  const hamburgerMenu = document.getElementById("hamburger-menu");
-  const navLinks = document.getElementById("nav-links");
-  hamburgerMenu.addEventListener("click", () => {
-    navLinks.classList.toggle("show");
-  });
-});
 </script>

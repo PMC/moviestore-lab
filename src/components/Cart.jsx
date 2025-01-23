@@ -11,7 +11,7 @@ const Cart = () => {
     if (storedCart) {
       setCart(JSON.parse(storedCart));
     }
-    setLoading(false); // Mark loading as complete after fetching cart
+    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -21,9 +21,9 @@ const Cart = () => {
 
   const updateCartCount = () => {
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    const cartCountElement = document.getElementById("cart-count");
-    if (cartCountElement) {
-      cartCountElement.textContent = totalItems;
+    const style = document.getElementById("cart-count-style");
+    if (style) {
+      style.textContent = `#cart-count::before { content: "${totalItems}"; }`;
     }
   };
 

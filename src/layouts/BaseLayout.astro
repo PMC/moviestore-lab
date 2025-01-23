@@ -13,13 +13,25 @@ const { title = "MovieStore-lab" } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <script is:inline>
+      const getInitialTheme = () => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) return savedTheme;
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      };
+      const theme = getInitialTheme();
+      document.documentElement.setAttribute("data-theme", theme);
+    
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+      const style = document.createElement("style");
+      style.id = "cart-count-style";
+      style.textContent = `#cart-count::before { content: "${totalItems}"; }`;
+      document.head.appendChild(style);
+    </script>
   </head>
   <body>
     <NavigationBar />
-    <script>
-      import { switchTheme } from "../scripts/themeSwitcher.js";
-      switchTheme();
-    </script>
     <slot />
     <Footer />
   </body>
