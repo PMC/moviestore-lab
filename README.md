@@ -81,9 +81,9 @@ To set up and run the project locally, follow these steps:
 
 ## Presentation Links
 
-- [Astro Explained Video][https://www.youtube.com/watch?v=rRxuVOutmFQ]
-- [Astro main page][https://astro.build/]
-- [Youtuber with lots of great learning videos][https://www.youtube.com/@CodinginPublic/videos]
-- [The Movie Database, used API][https://www.themoviedb.org/]
-- [Postman][https://www.postman.com/]
+- [Astro Explained Video](https://www.youtube.com/watch?v=rRxuVOutmFQ)
+- [Astro main page](https://astro.build/)
+- [Youtuber with lots of great learning videos](https://www.youtube.com/@CodinginPublic/videos)
+- [The Movie Database, used API](https://www.themoviedb.org/)
+- [Postman](https://www.postman.com/)
 
