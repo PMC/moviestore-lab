@@ -9,7 +9,9 @@
 }
 
 #searchNavTop input {
-  width: calc(100vw - 33rem);
+  @media (width >=900px) {
+    width: calc(100vw - 33rem);
+  }
 }
 #topnav {
   display: flex;
