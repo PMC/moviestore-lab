@@ -9,7 +9,7 @@
 }
 
 #searchNavTop input {
-  @media (width >=901px) {
+  @media (width > 900px) {
     width: calc(100vw - 33rem);
   }
 }
