@@ -1,29 +1,57 @@
+#checkoutMainTitle {
+    margin-top: 80px;
+}
+
+#grandTotalTitle {
+    justify-self: end;
+    margin-bottom: 100px;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+th,
+td {
+    width: 25%;
+    text-align: center;
+    padding: 8px;
+}
+
+td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .movie-info {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     text-align: start;
+    width: 100%;
 }
 
+/* Column 1 */
 .movie-info img {
     margin: 0.3em 0;
+    max-width: 100%;
 }
 
 .movie-info span {
     font-size: 0.9rem;
-    word-wrap: break-word;
-    max-width: 200px;
-    margin-bottom: 0.5em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: inline-block;
 }
 
-
-.quantity-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; 
-}
-
-.quantity-buttons {
+/* Column 2 & 3 */
+.quantity-container,
+.quantity-buttons,
+.price-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,13 +73,6 @@
     margin: 20px 0;
 }
 
-
-.price-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
 .unit-price {
     font-size: 1.2rem;
     font-weight: bold;
@@ -61,21 +82,14 @@
 
 .total-price {
     font-size: 0.9rem;
-    color: #666;/
+    color: #666;
 }
 
-#checkoutMainTitle {
-    margin-top: 80px;
-}
-
-#grandTotalTitle {
-    justify-self: end;
-    margin-bottom: 100px;
-}
-
+/* Remove button */
 .remove-button-container {
     margin-top: 50px;
 }
+
 #removeBtn {
     background-color: rgba(255, 0, 0, 0.575);
     border: none;
@@ -84,16 +98,13 @@
 
 #removeBtn::before {
     content: "Remove";
-  }
-  
-  @media (max-width: 900px) {
-    #removeBtn::before {
-      content: "X";
-      font-weight: bold;
-    }
+}
 
-    #removeBtn {
-        padding: 0.3em 0.7em;
+/* 500 - 900px screen */
+@media (max-width: 900px) {
+    th {
+        font-size: 0.9em;
+        font-weight: 400;
     }
 
     .quantity-buttons button {
@@ -103,4 +114,69 @@
     #minusBtn {
         padding: 0.3em 0.8em;
     }
-  }
+
+    #removeBtn::before {
+        content: "X";
+        font-weight: bold;
+    }
+
+    #removeBtn {
+        padding: 0.3em 0.7em;
+    }
+
+}
+
+/* < 500px screen */
+@media (max-width: 500px) {
+    th:nth-child(1),
+    td:nth-child(1) {
+        width: 40%;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2),
+    th:nth-child(3),
+    td:nth-child(3),
+    th:nth-child(4),
+    td:nth-child(4) {
+        width: 20%;
+    }
+
+    th {
+        font-size: 0.75em;
+        font-weight: 400;
+    }
+
+    td {
+        white-space: initial;
+        text-overflow: initial;
+    }
+
+    .movie-info {
+        text-align: center;
+    }
+
+    .movie-info span {
+        font-size: 0.9rem;
+        white-space: initial;
+        text-overflow: initial;
+    }
+
+    .unit-price {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .total-price-pretext {
+        display: none;
+    }
+
+    .total-price {
+        font-size: 0.9rem;
+    }
+
+    #removeBtn,
+    #minusBtn .quantity-buttons button {
+        padding: 0.15em 0.55em;
+    }
+}

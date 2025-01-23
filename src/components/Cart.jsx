@@ -108,7 +108,7 @@ const Cart = () => {
                 <div className="price-container">
                   <span className="unit-price">{createMoviePrice(item.id)}</span>
                   <span className="total-price">
-                    Total: ${(getNumericPrice(item.id) * item.quantity).toFixed(2)}
+                    <span className="total-price-pretext">Total: </span>${(getNumericPrice(item.id) * item.quantity).toFixed(2)}
                   </span>
                 </div>
               </td>

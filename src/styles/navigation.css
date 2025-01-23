@@ -135,3 +135,20 @@
     flex-wrap: nowrap;
   }
 }
+
+@media (max-width: 350px) {
+  #indexLink {
+    font-size: 1rem;
+  }
+  #cartIcon {
+    right: 4.5em;
+  }
+
+  #cart-count {
+    right: 3.25em;
+  }
+
+  #cart-link {
+    left: 12em;
+  }
+}
