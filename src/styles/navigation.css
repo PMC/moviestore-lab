@@ -8,15 +8,6 @@
   display: contents;
 }
 
-#nav-links {
-  display: flex;
-  list-style: none;
-  position: absolute;
-  padding: 0;
-  right: 170px;
-  align-items: center;
-}
-
 #topnav {
   display: flex;
   align-items: center;
