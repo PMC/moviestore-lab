@@ -5,10 +5,9 @@ import "../styles/navigation.css";
 
 <nav id="topnav">
   <a id="indexLink" href="/"><span>TheMovieStore</span></a>
-  <button id="hamburger-menu" aria-label="Toggle navigation">
-    ☰
-  </button>
-  <ul id="nav-links">
+  <button id="hamburger-menu" aria-label="Toggle navigation"> ☰ </button>
+  <ul id="nav-links"></ul>
+  <ul>
     <li>
       <form action="/movies" method="get" style="display: inline;">
         <input type="search" name="search" placeholder="Search" aria-label="Search" id="search-navbar" minlength="2" />
@@ -16,10 +15,12 @@ import "../styles/navigation.css";
     </li>
     <li id="GenreDropdown"><GenreDropdown /></li>
     <li id="contactLink"><a href="/contact">Contact</a></li>
+    <li>
+      <a id="cart-link" href="/checkout">
+        🛒<span id="cart-count"></span> items
+      </a>
+    </li>
   </ul>
-  <a id="cart-link" href="/checkout">
-    🛒<span id="cart-count"></span> items
-  </a>
 </nav>
 
 <script is:inline>
@@ -41,7 +42,7 @@ import "../styles/navigation.css";
         const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
         // Update the cart count dynamically
-        const style = document.getElementById('cart-count-style');
+        const style = document.getElementById("cart-count-style");
         if (style) {
           style.textContent = `#cart-count::before { content: "${totalItems}"; }`;
         }

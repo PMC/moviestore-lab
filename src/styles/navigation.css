@@ -106,7 +106,7 @@
   }
 
   #GenreDropdown::after {
-    content: '';
+    content: "";
     display: block;
     height: 20px;
   }
@@ -115,7 +115,6 @@
     position: absolute;
     left: 12.5em;
   }
-  
 }
 
 /* < 350px screens */
