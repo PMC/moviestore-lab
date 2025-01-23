@@ -1,3 +1,4 @@
+/* Nav */
 #indexLink {
   font-size: 1.5rem;
   font-weight: bold;
@@ -5,15 +6,6 @@
 
 #GenreDropdown {
   display: contents;
-}
-
-#hamburger-menu {
-  display: none;
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  color: lightgray;
-  cursor: pointer;
 }
 
 #nav-links {
@@ -25,7 +17,6 @@
   align-items: center;
 }
 
-
 #topnav {
   display: flex;
   align-items: center;
@@ -35,8 +26,7 @@
   z-index: 999;
   height: 80px;
   top: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
   box-shadow: var(--pico-box-shadow);
 }
 
@@ -44,17 +34,22 @@
   color: lightgray;
   text-decoration: none;
   padding: 0 10px;
+  scale: 1;
+  transform: translateY(0);
+  transition: all 1.3s ease;
 }
 
 #topnav a:hover {
-  color: var(--pico-primary-focus);
+  color: var(--text-color);
+  scale: 1.01;
+  transform: translateY(-1px);
+  transition: all 1.3s ease;
 }
 
-#cartIcon {
-  position: absolute;
-  right: 5.5em;
+/* Add to cart button on any page */
+.add-to-cart.jump {
+  animation: jump 0.5s ease-in-out;
 }
-
 
 @keyframes jump {
   0% {
@@ -70,10 +65,16 @@
   }
 }
 
-.add-to-cart.jump {
-  animation: jump 0.5s ease-in-out;
+#hamburger-menu {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: lightgray;
+  cursor: pointer;
 }
 
+/* 350 - 900px screens */
 @media (max-width: 900px) {
   #hamburger-menu {
     display: block;
@@ -81,21 +82,6 @@
     top: 50%;
     right: 10px;
     transform: translateY(-50%);
-  }
-
-  #cartIcon {
-    position: absolute;
-    right: 4.5em;
-  }
-
-  #cart-count {
-    position: absolute;
-    right: 3.25em;
-  }
-
-  #cart-link {
-    position: absolute;
-    left: 15.5em;
   }
 
   #nav-links {
@@ -131,24 +117,20 @@
     height: 20px;
   }
 
-  #topnav {
-    flex-wrap: nowrap;
+  #cart-link {
+    position: absolute;
+    left: 12.5em;
   }
+  
 }
 
+/* < 350px screens */
 @media (max-width: 350px) {
   #indexLink {
     font-size: 1rem;
   }
-  #cartIcon {
-    right: 4.5em;
-  }
-
-  #cart-count {
-    right: 3.25em;
-  }
 
   #cart-link {
-    left: 12em;
+    left: 9em;
   }
 }
