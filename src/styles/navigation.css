@@ -34,16 +34,10 @@
   color: lightgray;
   text-decoration: none;
   padding: 0 10px;
-  scale: 1;
-  transform: translateY(0);
-  transition: all 1.3s ease;
 }
 
 #topnav a:hover {
   color: var(--text-color);
-  scale: 1.01;
-  transform: translateY(-1px);
-  transition: all 1.3s ease;
 }
 
 /* Add to cart button on any page */
