@@ -82,7 +82,7 @@ To set up and run the project locally, follow these steps:
 
 ## Presentation Links
 
-- [What is Astro on youtube][https://www.youtube.com/watch?v=gxBkghlglTg&t=64s]
+- [What is Astro on youtube](https://www.youtube.com/watch?v=gxBkghlglTg)
 - [Astro main page](https://astro.build/)
 - [Youtuber with lots of great learning videos](https://www.youtube.com/@CodinginPublic/videos)
 - [The Movie Database, used API](https://www.themoviedb.org/)
