@@ -65,6 +65,7 @@ To set up and run the project locally, follow these steps:
 - **TMDB API**: Provides movie data for the application.
 - **Pico CSS**: For styling the webpage.
 - **Postman**: Used for api request demo.
+- **ExcaliDraw**: For brainstorming ideas.
 
 ## Learn More
 
@@ -73,6 +74,7 @@ To set up and run the project locally, follow these steps:
 - [Astro Discord Community](https://astro.build/chat)
 - [Astro Quick Start Course](https://youtu.be/XoIHKO6AkoM)
 - [Picocss documentation](https://picocss.com/docs)
+- [ExcaliDraw](https://excalidraw.com/)
   
 ## Other resources (add if you find anything)
 
