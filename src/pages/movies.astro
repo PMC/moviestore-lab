@@ -344,214 +344,218 @@ movies.sort((a, b) => {
   });
 </script>
 <style>
-  .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin: 1.5rem 0;
-    justify-content: center;
-  }
+  /* General Styles */
+main {
+  padding-top: 2rem;
+}
 
-  .filters label {
-    margin-right: 0.5rem;
-  }
+h1 {
+  font-size: 1rem;
+  height: 2rem;
+}
 
-  .filters input,
-  .filters select,
-  .filters button {
-    padding: 0.5rem;
-    font-size: 1rem;
-  }
+h2 {
+  font-size: 0.75rem;
+}
 
-  #filter-form {
-    margin-bottom: 2rem;
-  }
+a:hover {
+  color: var(--pico-primary-focus);
+}
 
-  fieldset {
-    border: none;
-    padding: 0;
-    margin: 0;
-  }
+ul {
+  margin-left: 1.5rem;
+}
 
-  select,
-  #start-year-filter,
-  #end-year-filter {
-    width: 140px;
-  }
+/* Filters Section */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  justify-content: center;
+}
 
-  section {
-    grid-template-columns: repeat(auto-fill, 30ch);
-  }
-  article {
-    border-color: rgba(0, 0, 0, 0.432);
-  }
-  a:hover {
-    color: var(--pico-primary-focus);
-  }
-  ul {
-    margin-left: 1.5rem;
-  }
-  article p,
-  article ul {
-    color: var(--pico-h3-color);
-  }
+.filters label {
+  margin-right: 0.5rem;
+}
 
-  h1 {
-    font-size: 1rem;
-    height: 2rem;
-  }
-  h2 {
-    font-size: 0.75rem;
-  }
+.filters input,
+.filters select,
+.filters button {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
 
-  main {
-    padding-top: 2rem;
-  }
-  .buttonArea {
-    position: relative;
-    top: -10px;
-    height: 46px;
-  }
-  #category-header-container {
-    margin-top: 40px;
-    justify-items: center;
-  }
-  #category-header-container h1 {
-    font-size: 3rem;
-    color: var(--pico-h1-color);
-  }
-  #category-header-container p {
-    font-size: 1.5rem;
-    margin-bottom: 50px;
-    color: var(--pico-h6-color);
-    padding-top: 20px;
-  }
+#filter-form {
+  margin-bottom: 2rem;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: height 0.5s ease, opacity 0.5s ease;
+}
 
-  .rating {
-    position: relative;
-    top: -6rem;
-    left: 12.6rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
 
-  .star-icon {
-    width: 60px;
-    height: 60px;
-    fill: rgba(255, 217, 0, 0.932);
-    position: absolute;
-  }
+select,
+#start-year-filter,
+#end-year-filter {
+  width: 140px;
+}
 
-  .star-rating {
-    position: absolute;
-    font-size: 17px;
-    font-weight: bold;
-    color: black;
-    text-align: center;
-    pointer-events: none;
-  }
-  .grid {
-    justify-content: center;
-  }
-  .unit-price {
-    margin-right: 1.2rem;
-  }
+.filterInputContainer {
+  display: flex;
+  flex-direction: column;
+}
 
-  .radioContainer {
-    display: flex;
-    flex-direction: row;
-    margin-left: 50px;
-  }
+.radioContainer {
+  display: flex;
+  flex-direction: row;
+  margin-left: 50px;
+}
 
-  .radioContainer fieldset {
-    width: 200px;
-  }
+.radioContainer fieldset {
+  width: 200px;
+}
 
-  .filterInputContainer {
-    display: flex;
-    flex-direction: column;
-  }
+#filter-toggle-button {
+  margin-bottom: 75px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  background-color: #444;
+  border: none;
+  border-radius: 5px;
+}
 
-  #filter-toggle-button {
-    margin-bottom: 75px;
-    padding: 10px 15px;
-    font-size: 1rem;
-    background-color: #444;
-    border: none;
-    border-radius: 5px;
-  }
+/* Grid and Articles */
+section {
+  grid-template-columns: repeat(auto-fill, 30ch);
+}
 
-  #filter-form {
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition:
-      height 0.5s ease,
-      opacity 0.5s ease;
-  }
+article {
+  border-color: rgba(0, 0, 0, 0.432);
+}
 
-  .buttonSection {
-    display: flex;
-    flex-direction: column;
-    width: 250px;
+article p,
+article ul {
+  color: var(--pico-h3-color);
+}
+
+.grid {
+  justify-content: center;
+}
+
+.unit-price {
+  margin-right: 1.2rem;
+}
+
+/* Category Header */
+#category-header-container {
+  margin-top: 40px;
+  justify-items: center;
+}
+
+#category-header-container h1 {
+  font-size: 3rem;
+  color: var(--pico-h1-color);
+}
+
+#category-header-container p {
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+  color: var(--pico-h6-color);
+  padding-top: 20px;
+}
+
+/* Rating Section */
+.rating {
+  position: relative;
+  top: -6rem;
+  left: 12.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.star-icon {
+  width: 60px;
+  height: 60px;
+  fill: rgba(255, 217, 0, 0.932);
+  position: absolute;
+}
+
+.star-rating {
+  position: absolute;
+  font-size: 17px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Button Section */
+.buttonSection {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  margin: 0 auto;
+}
+
+.buttonSection button {
+  padding: 0.5em 0;
+}
+
+/* < 900px screens */
+@media (max-width: 900px) {
+  select {
+    width: 100%;
     margin: 0 auto;
   }
 
+  #start-year-filter,
+  #end-year-filter {
+    width: 50%;
+    margin: 0;
+  }
+
+  .filterInputContainer {
+    width: 90%;
+  }
+
+  .radioContainer {
+    flex-direction: column;
+    margin: 0 0 0 50px;
+    justify-items: center;
+    font-size: 0.8rem;
+  }
+
+  .radioContainer fieldset {
+    width: 150px;
+    margin: 0 auto;
+  }
+
+  .buttonSection {
+    flex-direction: row;
+    width: 80%;
+  }
+
   .buttonSection button {
-    padding: 0.5em 0;
+    width: 450px;
   }
 
-  @media (max-width: 900px) {
-    select {
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    #start-year-filter,
-    #end-year-filter {
-      width: 50%;
-      margin: 0;
-    }
-
-    .filterInputContainer {
-      width: 90%;
-    }
-
-    .radioContainer {
-      flex-direction: column;
-      margin: 0 0 0 50px;
-      justify-items: center;
-      font-size: 0.8rem;
-    }
-
-    .buttonSection {
-      display: flex;
-      flex-direction: row;
-      width: 80%;
-      /* margin: 0 auto; */
-    }
-
-    .buttonSection button {
-      padding: 0.5em 0;
-      width:450px;
-    }
-
-    .radioContainer fieldset {
-      width: 150px;
-      margin: 0 auto;
-    }
-
-    #genre-filter option {
-      font-size: 0.8rem;
-    }
-
-    #both-years-filter {
-      display: flex;
-    }
-
-    #both-years-filter label{
-      display: none;
-    }
+  #genre-filter option {
+    font-size: 0.8rem;
   }
+
+  #both-years-filter {
+    display: flex;
+  }
+
+  #both-years-filter label {
+    display: none;
+  }
+}
 </style>
