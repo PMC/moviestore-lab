@@ -8,6 +8,9 @@
   display: contents;
 }
 
+#searchNavTop input {
+  width: calc(100vw - 33rem);
+}
 #topnav {
   display: flex;
   align-items: center;
