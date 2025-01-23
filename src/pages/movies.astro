@@ -110,29 +110,30 @@ movies.sort((a, b) => {
           </select>
 
           <!-- Year Filter -->
-          <label for="start-year-filter">Start Year:</label>
-          <input
-            id="start-year-filter"
-            type="number"
-            name="startYear"
-            min="1900"
-            max={new Date().getFullYear()}
-            placeholder="Start Year"
-            value={url.searchParams.get("startYear") || ""}
-          />
+          <div id="both-years-filter">
+            <label for="start-year-filter">Start Year:</label>
+            <input
+              id="start-year-filter"
+              type="number"
+              name="startYear"
+              min="1900"
+              max={new Date().getFullYear()}
+              placeholder="Start Year"
+              value={url.searchParams.get("startYear") || ""}
+            />
 
-          <label for="end-year-filter">End Year:</label>
-          <input
-            id="end-year-filter"
-            type="number"
-            name="endYear"
-            min="1900"
-            max={new Date().getFullYear()}
-            placeholder="End Year"
-            value={url.searchParams.get("endYear") || ""}
-          />
+            <label for="end-year-filter">End Year:</label>
+            <input
+              id="end-year-filter"
+              type="number"
+              name="endYear"
+              min="1900"
+              max={new Date().getFullYear()}
+              placeholder="End Year"
+              value={url.searchParams.get("endYear") || ""}
+            />
+          </div>
         </div>
-
         <!-- Ranking Filter -->
         <div class="radioContainer">
           <fieldset>
@@ -314,7 +315,7 @@ movies.sort((a, b) => {
     ) as HTMLButtonElement;
     const filterForm = document.getElementById(
       "filter-form",
-    ) as HTMLFormElement; 
+    ) as HTMLFormElement;
     const filterButton = document.getElementById("filter-toggle-button");
 
     resetButton.addEventListener("click", () => {
@@ -329,7 +330,7 @@ movies.sort((a, b) => {
 
     filterButton.addEventListener("click", () => {
       if (filterForm.style.height === "0px") {
-        filterForm.style.height = "600px";
+        filterForm.style.height = "700px";
         setTimeout(() => {
           filterForm.style.opacity = "1";
         }, 500);
@@ -460,11 +461,11 @@ movies.sort((a, b) => {
   .radioContainer {
     display: flex;
     flex-direction: row;
-    margin-left: 100px;
+    margin-left: 50px;
   }
 
   .radioContainer fieldset {
-    width: 250px;
+    width: 200px;
   }
 
   .filterInputContainer {
@@ -502,29 +503,38 @@ movies.sort((a, b) => {
   }
 
   @media (max-width: 900px) {
-    select,
+    select {
+      width: 100%;
+      margin: 0 auto;
+    }
+
     #start-year-filter,
     #end-year-filter {
-      width: 100vw;
-      margin: 0 auto;
+      width: 50%;
+      margin: 0;
+    }
+
+    .filterInputContainer {
+      width: 90%;
     }
 
     .radioContainer {
       flex-direction: column;
-      width: 100%;
-      margin: 0;
+      margin: 0 0 0 50px;
       justify-items: center;
+      font-size: 0.8rem;
     }
 
     .buttonSection {
       display: flex;
-      flex-direction: column;
-      width: 150px;
-      margin: 0 auto;
+      flex-direction: row;
+      width: 80%;
+      /* margin: 0 auto; */
     }
 
     .buttonSection button {
       padding: 0.5em 0;
+      width:450px;
     }
 
     .radioContainer fieldset {
@@ -534,6 +544,14 @@ movies.sort((a, b) => {
 
     #genre-filter option {
       font-size: 0.8rem;
+    }
+
+    #both-years-filter {
+      display: flex;
+    }
+
+    #both-years-filter label{
+      display: none;
     }
   }
 </style>
