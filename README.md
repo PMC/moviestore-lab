@@ -68,6 +68,7 @@ To set up and run the project locally, follow these steps:
 
 ## Learn More
 
+- [Astro Explained Video](https://www.youtube.com/watch?v=rRxuVOutmFQ)
 - [Astro Documentation](https://docs.astro.build)
 - [Astro Discord Community](https://astro.build/chat)
 - [Astro Quick Start Course](https://youtu.be/XoIHKO6AkoM)
@@ -81,7 +82,7 @@ To set up and run the project locally, follow these steps:
 
 ## Presentation Links
 
-- [Astro Explained Video](https://www.youtube.com/watch?v=rRxuVOutmFQ)
+- [What is Astro on youtube][https://www.youtube.com/watch?v=gxBkghlglTg&t=64s]
 - [Astro main page](https://astro.build/)
 - [Youtuber with lots of great learning videos](https://www.youtube.com/@CodinginPublic/videos)
 - [The Movie Database, used API](https://www.themoviedb.org/)
