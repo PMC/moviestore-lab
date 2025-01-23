@@ -64,6 +64,7 @@ To set up and run the project locally, follow these steps:
 - **JavaScript**: Just because the web is built using it.
 - **TMDB API**: Provides movie data for the application.
 - **Pico CSS**: For styling the webpage.
+- **Postman**: Used for api request demo.
 
 ## Learn More
 
