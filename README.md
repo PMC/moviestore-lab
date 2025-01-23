@@ -79,4 +79,11 @@ To set up and run the project locally, follow these steps:
 - [Example themes from Astro own repo](https://github.com/withastro/astro/tree/latest/examples)
 - [Live Code: Dev Learning Portfolio App in Astro](https://www.youtube.com/watch?v=4xJsAgQYVkE)
 
+## Presentation Links
+
+- [Astro Explained Video][https://www.youtube.com/watch?v=rRxuVOutmFQ]
+- [Astro main page][https://astro.build/]
+- [Youtuber with lots of great learning videos][https://www.youtube.com/@CodinginPublic/videos]
+- [The Movie Database, used API][https://www.themoviedb.org/]
+- [Postman][https://www.postman.com/]
 
