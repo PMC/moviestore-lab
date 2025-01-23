@@ -57,7 +57,7 @@ To set up and run the project locally, follow these steps:
    ```
    The application will be accessible at `http://localhost:4321`.
 
-## Technologies Used ⚙️
+## ⚙️ Technologies Used
 
 - **Astro**: A modern static site builder.
 - **React**: For server side things.
