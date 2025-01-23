@@ -17,7 +17,7 @@ This project was created as part of Lexicon learning Course and was part of a Gr
 Astro, React and JavaScript to create a simple Movie store that uses TMDB.org API to display information about movies the user
 potentially want to buy. 
 
-## Features
+## Features 🪶
 
 - **Movie Search**: Users can search for movies by title and view relevant details.
 - **Add to Cart**: Add movies to the Cart.
@@ -25,7 +25,7 @@ potentially want to buy.
 - **Movie Details**: Provides detailed information about selected movies, including release date, overview, and ratings.
 - **Display movie categories**: display movies in different categories.
   
-## Getting Started
+## Getting Started 
 
 To set up and run the project locally, follow these steps:
 
@@ -57,7 +57,7 @@ To set up and run the project locally, follow these steps:
    ```
    The application will be accessible at `http://localhost:4321`.
 
-## Technologies Used
+## Technologies Used ⚙️
 
 - **Astro**: A modern static site builder.
 - **React**: For server side things.
@@ -67,7 +67,7 @@ To set up and run the project locally, follow these steps:
 - **Postman**: Used for api request demo.
 - **ExcaliDraw**: For brainstorming ideas.
 
-## Learn More
+## Learn More 🏫 🔗
 
 - [Astro Explained Video](https://www.youtube.com/watch?v=rRxuVOutmFQ)
 - [Astro Documentation](https://docs.astro.build)
@@ -76,13 +76,13 @@ To set up and run the project locally, follow these steps:
 - [Picocss documentation](https://picocss.com/docs)
 - [ExcaliDraw](https://excalidraw.com/)
   
-## Other resources (add if you find anything)
+## Other resources (add if you find anything) 🔗
 
 - [5 ways to load data](https://youtu.be/aS5id2273gY?si=4ukuxpXhy0GvO2ly) also watch this guy youtube channel because he has a lot of astro videos.
 - [Example themes from Astro own repo](https://github.com/withastro/astro/tree/latest/examples)
 - [Live Code: Dev Learning Portfolio App in Astro](https://www.youtube.com/watch?v=4xJsAgQYVkE)
 
-## Presentation Links
+## Presentation Links 🔗
 
 - [What is Astro on youtube](https://www.youtube.com/watch?v=gxBkghlglTg)
 - [Astro main page](https://astro.build/)
