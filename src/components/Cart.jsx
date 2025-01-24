@@ -47,15 +47,13 @@ const Cart = () => {
 
   const getMovieImage = (id) => {
     const movie = moviesArray.find((movie) => movie.id === id);
-    const imgUrl = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
+    const imgUrl = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
     return imgUrl;
   };
 
   const updateQuantity = (id, delta) => {
     setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === id ? { ...item, quantity: Math.max(1, item.quantity + delta) } : item
-      )
+      prevCart.map((item) => (item.id === id ? { ...item, quantity: Math.max(1, item.quantity + delta) } : item))
     );
   };
 
@@ -108,7 +106,8 @@ const Cart = () => {
                 <div className="price-container">
                   <span className="unit-price">{createMoviePrice(item.id)}</span>
                   <span className="total-price">
-                    <span className="total-price-pretext">Total: </span>${(getNumericPrice(item.id) * item.quantity).toFixed(2)}
+                    <span className="total-price-pretext">Total: </span>$
+                    {(getNumericPrice(item.id) * item.quantity).toFixed(2)}
                   </span>
                 </div>
               </td>
